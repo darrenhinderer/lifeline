@@ -3,11 +3,17 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
+    events = []
+    @events.each do |event|
+      # dates need to be utc
+      tmp = { :start => event.start_date.utc.to_s,
+              :title => event.title,
+              :description => event.content }
+puts event.end_date.nil?
+      tmp.update({ :end => event.end_date.utc.to_s}) unless event.end_date.nil?
+      events << tmp
     end
+    @data = {"events" => events}.to_json
   end
 
   # GET /events/1

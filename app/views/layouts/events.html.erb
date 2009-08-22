@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag 'lifeline' %>
   <%= javascript_include_tag :defaults %>
 </head>
-<body onload="onLoad();" onresize="onResize();">
+<body onload='onLoad(<%= @data %>);' onresize='onResize();'>
 
   <p style="color: green"><%= flash[:notice] %></p>
   <%= yield %>
