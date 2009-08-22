@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   def self.search query
     if query && query.size > 0
       User.find(:all, :conditions => ["username like ? or email like ?", 
-        "%#{query}%", "%#{query}"])
+        "%#{query}%", "%#{query}"], :order => "username")
     else
-      User.all
+      User.find(:all, :order => "username")
     end
   end
 
