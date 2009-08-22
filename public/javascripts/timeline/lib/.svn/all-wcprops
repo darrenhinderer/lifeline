@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/repository/!svn/ver/5328/tools/jetty
+END
+jetty-util-6.0.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repository/!svn/ver/5328/tools/jetty/jetty-util-6.0.1.jar
+END
+servlet-api-2.5-6.0.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repository/!svn/ver/5328/tools/jetty/servlet-api-2.5-6.0.1.jar
+END
+start.jar
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/repository/!svn/ver/5328/tools/jetty/start.jar
+END
+jetty-6.0.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repository/!svn/ver/5328/tools/jetty/jetty-6.0.1.jar
+END

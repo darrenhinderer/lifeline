@@ -9,14 +9,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = Event.all
+    @events = Event.getAllPublic(@user)
     events = []
     @events.each do |event|
       # dates need to be utc
       tmp = { :start => event.start_date.utc.to_s,
               :title => event.title,
               :description => event.content }
-puts event.end_date.nil?
       tmp.update({ :end => event.end_date.utc.to_s}) unless event.end_date.nil?
       events << tmp
     end

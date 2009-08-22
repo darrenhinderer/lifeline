@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repository/!svn/ver/7883/timeline/trunk/src/webapp/examples/religions
+END
+jewish.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repository/!svn/ver/5332/timeline/trunk/src/webapp/examples/religions/jewish.xml
+END
+christianity.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repository/!svn/ver/5332/timeline/trunk/src/webapp/examples/religions/christianity.xml
+END
+jewish-history.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repository/!svn/ver/7883/timeline/trunk/src/webapp/examples/religions/jewish-history.html
+END
+christianity.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repository/!svn/ver/7883/timeline/trunk/src/webapp/examples/religions/christianity.html
+END
+religions.html
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repository/!svn/ver/7883/timeline/trunk/src/webapp/examples/religions/religions.html
+END
