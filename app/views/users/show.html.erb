@@ -13,6 +13,11 @@
 </div>
 
 <div id="lifeline"></div>
+<div id="favorites">
+  <% for fav in @user.friends %>
+    <%= check_box_tag("favs[]", fav.id, false) %><%= fav.username %>
+  <% end %>
+</div>
 
 <% if @user.id == session[:user_id] %>
   <%= render :partial => "events/add" %>
