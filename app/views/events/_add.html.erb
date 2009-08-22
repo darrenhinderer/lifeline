@@ -1,0 +1,29 @@
+<div id="add_event">
+  <h1> Add a new event </h1>
+  <p id="errors"><%= @event.errors.full_messages %></p>
+  <% form_remote_for @event do |f| %>
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :start_date %>
+      <%= f.text_field :start_date %>
+    </p>
+    <p>
+      <%= f.label :end_date %>
+      <%= f.text_field :end_date %>
+    </p>
+    <p>
+      <%= f.label :content %>
+      <%= f.text_area :content, :rows => 5 %>
+    </p>
+    <p>
+      <%= f.label :private, "Make event private" %>
+      <%= f.check_box :private %>
+    </p>
+
+    <%= f.submit "Add" %>
+    <%= link_to_function "Clear" %>
+  <% end %>
+</div>
