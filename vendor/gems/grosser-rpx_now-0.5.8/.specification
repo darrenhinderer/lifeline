@@ -1,0 +1,83 @@
+--- !ruby/object:Gem::Specification 
+name: grosser-rpx_now
+version: !ruby/object:Gem::Version 
+  version: 0.5.8
+platform: ruby
+authors: 
+- Michael Grosser
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-06-21 00:00:00 -06:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: activesupport
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: "0"
+    version: 
+description: 
+email: grosser.michael@gmail.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README.markdown
+files: 
+- CHANGELOG
+- MIGRATION
+- README.markdown
+- Rakefile
+- VERSION.yml
+- certs/ssl_cert.pem
+- init.rb
+- lib/rpx_now.rb
+- lib/rpx_now/contacts_collection.rb
+- lib/rpx_now/user_integration.rb
+- lib/rpx_now/user_proxy.rb
+- rpx_now.gemspec
+- spec/fixtures/get_contacts_response.json
+- spec/rpx_now/contacts_collection_spec.rb
+- spec/rpx_now/user_proxy_spec.rb
+- spec/rpx_now_spec.rb
+- spec/spec_helper.rb
+has_rdoc: true
+homepage: http://github.com/grosser/rpx_now
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.3
+signing_key: 
+specification_version: 3
+summary: Helper to simplify RPX Now user login/creation
+test_files: 
+- spec/rpx_now_spec.rb
+- spec/rpx_now/contacts_collection_spec.rb
+- spec/rpx_now/user_proxy_spec.rb
+- spec/spec_helper.rb
