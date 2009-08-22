@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.search(params[:query])
 
     respond_to do |format|
       format.html # index.html.erb
