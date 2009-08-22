@@ -1,8 +1,6 @@
 <div id="gravatar">
   <%= image_tag @user.gravatar_url %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
-  <%= link_to 'Logout', {:controller => "sessions", :action => "destroy"} %>
+  <%= link_to "Edit Profile", edit_user_path(session[:user_id]) %>
   <p> 
     <b>Username:</b> <%=h @user.username %>
   </p>
@@ -15,5 +13,12 @@
 </div>
 
 <div id="lifeline"></div>
+<div id="favorites">
+  <% for fav in @user.friends %>
+    <%= check_box_tag("favs[]", fav.id, false) %><%= fav.username %>
+  <% end %>
+</div>
 
-<%= render :partial => "events/add" %>
+<% if @user.id == session[:user_id] %>
+  <%= render :partial => "events/add" %>
+<% end %>

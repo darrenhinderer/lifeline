@@ -1,6 +1,3 @@
-<%= link_to 'Logout', {:controller => "sessions", :action => "destroy"} %>
-<br/>
-
 <h1>User Search</h1>
 
 <% form_tag(users_path(@plan), :method => :get) do -%>
@@ -24,11 +21,15 @@
     <td><%=h user.name %></td>
     <td><%=h user.email %></td>
     <% if !session[:user_id].nil? %>
-       <% unless @current_user.is_friend?(user) %>
-         <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
-       <% else %>
-         <td>Friend</td>
+       <td>
+       <% if @current_user.id == user.id %>
+         You!
+       <% elsif !@current_user.is_friend?(user) %>
+         <%= link_to "Follow", friendships_path(:friend_id => user), :method => :post %>
+       <% else @current_user.is_friend?(user)  %>
+         Following
        <% end %>
+       </td>
     <% end %>
   </tr>
 <% end %>

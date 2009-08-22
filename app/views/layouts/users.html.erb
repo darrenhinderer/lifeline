@@ -4,8 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "timeline_js/timeline-api.js?bundle=true" %>
+  <%= javascript_include_tag :defaults %>
+  <%= calendar_date_select_includes %>
   <%= stylesheet_link_tag 'lifeline' %>
   <title>Users: <%= controller.action_name %></title>
 </head>
@@ -13,8 +14,9 @@
 
   <div id="content">
     <div id="nav">
-      [ <%= link_to "Users", :controller => "users" %> |
-        <%= link_to "Events", :controller => "events" %>
+      [ <%= link_to "Home", user_path(session[:user_id]) %> |
+        <%= link_to "Search", users_path %> |
+        <%= link_to "Logout", {:controller => :sessions, :action => :destroy}%> 
       ]
     </div>
     <%= yield %>
