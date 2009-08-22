@@ -38,4 +38,7 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  config.gem "grosser-rpx_now", :lib => "rpx_now", :source => "http://gems.github.com/", :version => '0.5.8'
 end
+
+RPXNow.api_key = "baade21c25c14be57e151e3a52a0b58ae49d9987"
