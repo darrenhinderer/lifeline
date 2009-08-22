@@ -1,5 +1,8 @@
 
-<%= image_tag @users.gravatar_url %>
+<%= image_tag @user.gravatar_url %>
+<h3><%= @user.username %></h3>
 
-<%= link_to 'Edit', edit_user_path(@users) %> |
+<div id="lifeline"></div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

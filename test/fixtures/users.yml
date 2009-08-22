@@ -1,7 +1,5 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+ darren:
+   name: Darren Hinderer 
+   username: hindenburg
+   email: hindenburg@gmail.com
+   identifier: asdfsafdasddasdasfsfasfsdfs
