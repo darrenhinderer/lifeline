@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
 
   def rpx_token
     raise "hackers?" unless data = RPXNow.user_data(params[:token])
-    user = User.find_by_identifier(data[:identifier]) || User.create!(data)
+    user = User.find_or_create_with_rpx(data)
     session[:user_id] = user.id
-    redirect_to '/'
+    redirect_to user_path(user)
   end
 
   def destroy

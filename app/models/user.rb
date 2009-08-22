@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  validates_presence_of :username
-  validates_presence_of :name
-  validates_presence_of :email
+  #can't rely on rpx to give more than this
+  validates_presence_of :identifier
+
   has_many :events
   is_gravtastic!
 
@@ -13,4 +13,19 @@ class User < ActiveRecord::Base
       User.all
     end
   end
+
+  def self.find_or_create_with_rpx(data)
+    user = self.find_by_identifier(data['identifier'])
+    if user.nil?
+      user = self.new
+      user.identifier = data['identifier']
+      user.username = data['preferredUsername']  || data['username']
+      user.email = data['verifiedEmail'] || data['email']
+      user.name = data['displayName']
+      user.save!
+    end
+
+    user
+  end
+
 end
