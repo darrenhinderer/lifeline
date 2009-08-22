@@ -7,13 +7,10 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
   is_gravtastic!
 
-  def self.search query
-    if query && query.size > 0
-      User.find(:all, :conditions => ["username like ? or email like ?", 
-        "%#{query}%", "%#{query}"], :order => "username")
-    else
-      User.find(:all, :order => "username")
-    end
+  def self.search(search, page)
+    paginate :per_page => 2, :page => page,
+             :conditions => ['username like ? or email like ?', 
+             "%#{search}%", "%#{search}%"], :order => 'username'
   end
 
   def self.find_or_create_with_rpx(data)

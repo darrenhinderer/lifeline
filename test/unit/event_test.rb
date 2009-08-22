@@ -28,17 +28,17 @@ class EventTest < ActiveSupport::TestCase
     vent = makeEvent(bill, "DOB")
     bob = makeUser("bob")
     vent = makeEvent(bob, "DOB")
-    result = Event.getAllPublic(bob)
+    result = Event.all_public(bob)
     assert_not_nil result
     assert_equal 1, result.length
     assert_equal "DOB", result[0].title
     vent = makeEvent(bob, "Grad")
-    result = Event.getAllPublic(bob)
+    result = Event.all_public(bob)
     assert_equal 2, result.length
     vent = makeEvent(bob, "Married")
     vent.private = true;
     vent.save
-    result = Event.getAllPublic(bob)
+    result = Event.all_public(bob)
     assert_equal 2, result.length
   end
 end

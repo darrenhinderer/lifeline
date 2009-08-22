@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+
   def index
-    @users = User.search(params[:query])
+    @users = User.search(params[:query], params[:page])
     @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
 
     respond_to do |format|
@@ -10,15 +11,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = Event.getAllPublic(@user)
+    @event = Event.new
+    @events = Event.all_public(@user)
     events = []
     @events.each do |event|
-      # dates need to be utc
-      tmp = { :start => event.start_date.utc.to_s,
-              :title => event.title,
-              :description => event.content }
-      tmp.update({ :end => event.end_date.utc.to_s}) unless event.end_date.nil?
-      events << tmp
+    puts event.start_date.utc
+      events << event.to_timeline
     end
     @data = {"events" => events}.to_json
 

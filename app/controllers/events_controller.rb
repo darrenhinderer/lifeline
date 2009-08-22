@@ -25,15 +25,22 @@ class EventsController < ApplicationController
   end
 
   def create
-    @user = User.find(:first)
     @event = Event.new(params[:event])
-    @event.user = @user
+    user = User.find(session[:user_id])
+    @event.user_id = user.id
 
     respond_to do |format|
       if @event.save
-        flash[:notice] = 'Event was successfully created.'
+        @data = {"events" => [@event.to_timeline]}.to_json
+        @event = Event.new
         format.html { redirect_to(@event) }
+        format.js   {
+          render(:update) { |page| page.replace :add_event, :partial => "add" }
+        }
       else
+        format.js   {
+          render(:update) { |page| page.replace :add_event, :partial => "add" }
+        }
         format.html { render :action => "new" }
       end
     end
