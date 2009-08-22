@@ -39,18 +39,6 @@ puts event.end_date.nil?
     @user = User.find(params[:id])
   end
 
-  def show
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
-  def edit
-    @user = User.find(params[:id])
-  end
-
   def update
     @user = User.find(params[:id])
 
