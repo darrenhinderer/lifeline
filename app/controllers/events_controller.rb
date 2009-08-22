@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  ActionView::Base.field_error_proc = proc { |input, instance| input }
 
   def index
     render :text => "nothing to see here, move along folks"

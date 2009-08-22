@@ -5,8 +5,8 @@ h1 { font-size: 16px; font-weight: bold; }
 #content  { width: 900px; margin-left: 20px; }
 #lifeline { height: 250px; border: 1px solid #aaa; }
 #nav { text-align: right; }
-#gravatar { text-align: right; height: 80px; margin: 10px 0; }
-#gravatar img{ float: right; margin-left: 10px; }
+#gravatar { text-align: left; height: 80px; margin: 10px 0; }
+#gravatar img{ float: left; margin-right: 20px; }
 #add_event { margin-top: 20px; }
 #add_event form label {
   display:block;
@@ -17,5 +17,5 @@ h1 { font-size: 16px; font-weight: bold; }
   font-weight:bold;
 }
 #add_event form p { padding: 3px 0; }
-#errors { color: red; }
-.fieldWithErrors { background-color: red; }
+#event_start_date, #event_end_date { width: 210px; }
+#errors {color: red; }
