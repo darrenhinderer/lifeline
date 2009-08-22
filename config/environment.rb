@@ -38,6 +38,7 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  config.gem "json", :lib => "json", :version => '1.1.7'
   config.gem "grosser-rpx_now", :lib => "rpx_now", :source => "http://gems.github.com/", :version => '0.5.8'
 end
 
