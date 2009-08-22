@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
 
@@ -34,6 +33,18 @@ puts event.end_date.nil?
 
   def create
     render :text => "nothing to see here, move along folks"
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def show
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
   end
 
   def edit
