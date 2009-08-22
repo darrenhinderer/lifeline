@@ -13,8 +13,8 @@
 <body onload='onLoad(<%= @data %>);' onresize='onResize();'>
 
   <p>[
-     <%= link_to "User", :controller => "users" %> |
-     <%= link_to "Events", :controller => "events" %>
+     <%= link_to "User", { :controller => :users } %> |
+     <%= link_to "Events", { :controller => :events, :action => :new } %>
      ]</p>
   <p style="color: green"><%= flash[:notice] %></p>
   <%= yield %>

@@ -25,7 +25,9 @@ class EventsController < ApplicationController
   end
 
   def create
+    @user = User.find(:first)
     @event = Event.new(params[:event])
+    @event.user = @user
 
     respond_to do |format|
       if @event.save
