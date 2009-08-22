@@ -1,5 +1,6 @@
-log/*.log
+logs/*.log
 tmp/**/*
 doc/api
 doc/app
 config/database.yml
+db/schema.rb
