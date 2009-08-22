@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => :users
+  map.root :controller => :sessions, :action => :new
   map.resources :users
   map.resources :events
   map.resources :friendships
