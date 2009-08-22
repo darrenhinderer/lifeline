@@ -15,13 +15,13 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_with_rpx(data)
-    user = self.find_by_identifier(data['identifier'])
+    user = self.find_by_identifier(data[:identifier])
     if user.nil?
       user = self.new
-      user.identifier = data['identifier']
-      user.username = data['preferredUsername']  || data['username']
-      user.email = data['verifiedEmail'] || data['email']
-      user.name = data['displayName']
+      user.identifier = data[:identifier]
+      user.username = data[:preferredUsername]  || data[:username]
+      user.email = data[:verifiedEmail] || data[:email]
+      user.name = data[:displayName]
       user.save!
     end
 
