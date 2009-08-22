@@ -2,12 +2,12 @@ var tl;
 function onLoad() {
   var bandInfos = [
     Timeline.createBandInfo({
-        width:          "70%", 
+        width:          "80%", 
         intervalUnit:   Timeline.DateTime.MONTH, 
         intervalPixels: 100
     }),
     Timeline.createBandInfo({
-        width:          "30%", 
+        width:          "20%", 
         intervalUnit:   Timeline.DateTime.YEAR, 
         intervalPixels: 200
     })
