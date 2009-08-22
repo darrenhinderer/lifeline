@@ -1,5 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
    user: darren
    title: "Hello World"
@@ -12,15 +10,22 @@ two:
    user: terry
    title: "Goodnight World"
    content: "Test"
-   start_date: "2001-08-21 23:10:00"
-   private: 1
+   start_date: "2007-08-21 23:10:00"
+   private: true
 
 three:
    user: terry
    title: "Hi"
    content: "Test"
    start_date: "2001-08-21 23:10:00"
-   private: 1
+   private: true
+
+four:
+   user_id: 2
+   title: "Hi"
+   content: "Test"
+   start_date: "2009-08-01 13:10:00"
+   private: true
 
 four:
    user: darren
@@ -37,4 +42,3 @@ five:
    start_date: "2009-08-12 23:10:00"
    end_date: "2009-08-12 23:10:00"
    private: false
-
