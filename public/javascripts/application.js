@@ -12,7 +12,6 @@ function onLoad(events) {
         ]
       };*/
   
-  alert(events);
   var eventSource = new Timeline.DefaultEventSource(); 
   var theme = Timeline.ClassicTheme.create();
   theme.event.label.width = 250;
