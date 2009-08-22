@@ -8,10 +8,12 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield %>
+  <p>[
+     <%= link_to "User", :controller => "users" %> |
+     <%= link_to "Events", :controller => "events" %>
+     ]</p>
+  <p style="color: green"><%= flash[:notice] %></p>
+  <%= yield %>
 
 </body>
 </html>

@@ -10,6 +10,10 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body onload='onLoad(<%= @data %>);' onresize='onResize();'>
+  <p>[
+     <%= link_to "User", :controller => "users" %> |
+     <%= link_to "Events", :controller => "events" %>
+     ]</p>
 
   <p style="color: green"><%= flash[:notice] %></p>
   <%= yield %>
