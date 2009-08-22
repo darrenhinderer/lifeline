@@ -11,7 +11,7 @@ set :scm, :git
 set :branch, "master"
 set :user, "magpie"
 
-after "deploy:finalize_update", "db:symlink"
+after "deploy:finalize_update", "db:setup"
 
 namespace :deploy do
    desc "restart passenger"
@@ -40,9 +40,6 @@ namespace :db do
 
     config = ERB.new(default_template)
     put config.result(binding), "#{shared_path}/database.yml"
-  end
-
-  task :symlink, :except => {:no_release => true} do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   end
 end
