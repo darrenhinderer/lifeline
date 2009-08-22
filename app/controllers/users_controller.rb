@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = Event.all
+    @events = Event.getAllPublic(@user)
     events = []
     @events.each do |event|
       # dates need to be utc
