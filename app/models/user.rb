@@ -27,4 +27,12 @@ class User < ActiveRecord::Base
     user
   end
 
+  def is_friend? friend
+    if self.friends(true).include?(friend)
+      return true
+    else
+      return false
+    end
+  end
+
 end

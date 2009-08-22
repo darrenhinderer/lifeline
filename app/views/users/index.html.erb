@@ -24,7 +24,11 @@
     <td><%=h user.name %></td>
     <td><%=h user.email %></td>
     <% if !session[:user_id].nil? %>
-       <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
+       <% unless @current_user.is_friend?(user) %>
+         <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
+       <% else %>
+         <td>Friend</td>
+       <% end %>
     <% end %>
   </tr>
 <% end %>
