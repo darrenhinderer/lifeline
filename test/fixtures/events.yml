@@ -15,14 +15,14 @@ two:
 
 three:
    user: terry
-   title: "Hi"
+   title: "Hi One"
    content: "Test"
-   start_date: "2001-08-21 23:10:00"
+   start_date: "2008-08-21 23:10:00"
    private: true
 
 four:
-   user_id: 2
-   title: "Hi"
+   user: terry
+   title: "Hi Two"
    content: "Test"
    start_date: "2009-08-01 13:10:00"
    private: true
@@ -31,8 +31,7 @@ four:
    user: darren
    title: "Event Four"
    content: "2009-08-16 23:10:00"
-   start_date: "2009-08-16 23:10:00"
-   end_date: "2009-08-16 23:10:00"
+   start_date: "2009-08-26 23:10:00"
    private: false
 
 five:

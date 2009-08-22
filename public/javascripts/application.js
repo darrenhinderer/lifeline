@@ -1,10 +1,8 @@
 var tl;
+var eventSource;
+
 function onLoad(events) {
-  var eventSource = new Timeline.DefaultEventSource(); 
-  var theme = Timeline.ClassicTheme.create();
-  theme.event.label.width = 250;
-  theme.event.bubble.width=320;
-  theme.event.bubble.height=220;
+  eventSource = new Timeline.DefaultEventSource(); 
 
   var bandInfos = [
     Timeline.createBandInfo({
@@ -12,7 +10,6 @@ function onLoad(events) {
         intervalUnit:   Timeline.DateTime.MONTH, 
         intervalPixels: 100,
         eventSource: eventSource,
-        theme:theme
     }),
     Timeline.createBandInfo({
         width:          "20%", 
@@ -24,6 +21,11 @@ function onLoad(events) {
   bandInfos[1].highlight = true;
   tl = Timeline.create(document.getElementById("lifeline"), bandInfos);
   eventSource.loadJSON(events, "");
+}
+
+function loadEvent(events) {
+  if (eventSource)
+    eventSource.loadJSON(events, "");
 }
 
 var resizeTimerID = null;

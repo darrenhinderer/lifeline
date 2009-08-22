@@ -1,1 +1,21 @@
-#lifeline { height: 250px; width: 800px; border: 1px solid #aaa; }
+@import url(reset.css);
+
+body { font-size: 13px; }
+h1 { font-size: 16px; font-weight: bold; }
+#content  { width: 900px; margin-left: 20px; }
+#lifeline { height: 250px; border: 1px solid #aaa; }
+#nav { text-align: right; }
+#gravatar { text-align: right; height: 80px; margin: 10px 0; }
+#gravatar img{ float: right; margin-left: 10px; }
+#add_event { margin-top: 20px; }
+#add_event form label {
+  display:block;
+  float:left;
+  width:140px;
+  margin-right: 10px;
+  text-align: right;
+  font-weight:bold;
+}
+#add_event form p { padding: 3px 0; }
+#errors { color: red; }
+.fieldWithErrors { background-color: red; }

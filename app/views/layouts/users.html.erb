@@ -12,12 +12,14 @@
 </head>
 <body onload='onLoad(<%= @data %>);' onresize='onResize();'>
 
-  <p>[
-     <%= link_to "User", :controller => "users" %> |
-     <%= link_to "Events", :controller => "events" %>
-     ]</p>
-  <p style="color: green"><%= flash[:notice] %></p>
-  <%= yield %>
+  <div id="content">
+    <div id="nav">
+      [ <%= link_to "Users", :controller => "users" %> |
+        <%= link_to "Events", :controller => "events" %>
+      ]
+    </div>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
