@@ -1,5 +1,16 @@
 
-<%= image_tag @users.gravatar_url %>
+<p> 
+<%= image_tag @user.gravatar_url %>
+</p> 
 
-<%= link_to 'Edit', edit_user_path(@users) %> |
+<p> 
+  <b>Name:</b>
+  <%=h @user.name %>
+</p>
+<p> 
+  <b>Email:</b>
+  <%=h @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
