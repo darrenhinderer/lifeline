@@ -41,6 +41,10 @@ Rails::Initializer.run do |config|
   config.gem "json", :lib => "json", :version => '1.1.7'
   config.gem "grosser-rpx_now", :lib => "rpx_now", :source => "http://gems.github.com/", :version => '0.5.8'
   config.gem 'gravtastic', :version => '>= 2.1.0'
+  config.gem "calendar_date_select"
+  config.gem 'mislav-will_paginate', :version => '~> 2.3.11', :lib => 'will_paginate', 
+    :source => 'http://gems.github.com'
+
 end
 
 RPXNow.api_key = "baade21c25c14be57e151e3a52a0b58ae49d9987"

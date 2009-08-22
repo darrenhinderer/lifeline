@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.search(params[:query])
+    @users = User.search(params[:query], params[:page])
+    @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
 
     respond_to do |format|
       format.html # index.html.erb
