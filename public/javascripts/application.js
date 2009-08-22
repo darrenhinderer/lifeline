@@ -1,18 +1,5 @@
 var tl;
 function onLoad(events) {
-  /*var events = {
-        'dateTimeFormat': 'iso8601',
-        'events': [
-          {
-             'start': 'Sat Aug 22 05:44:47 UTC 2009',
-             'end'  : 'Sat Aug 24 05:44:47 UTC 2009',
-             'title': 'Manual event',
-             'description': 'Some words'
-          }
-        ]
-      };*/
-  
-  alert(events);
   var eventSource = new Timeline.DefaultEventSource(); 
   var theme = Timeline.ClassicTheme.create();
   theme.event.label.width = 250;
