@@ -1,7 +1,7 @@
-= Life-line.me
+# Life-line.me #
 
 
-== Starting Setup
+## Starting Setup ##
 
  cp config/database.template.yml config/database.yml
  sudo rake:gems:install
