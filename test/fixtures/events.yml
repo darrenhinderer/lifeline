@@ -1,7 +1,22 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+one:
+   user_id: 1
+   title: "Hello World"
+   content: "The music next door is loud"
+   start_date: "2009-08-21 23:10:00"
+   end_date: "2009-08-21 23:10:00"
+
+two:
+   user_id: 2
+   title: "Goodnight World"
+   content: "Test"
+   start_date: "2001-08-21 23:10:00"
+   private: 1
+
+three:
+   user_id: 2
+   title: "Hi"
+   content: "Test"
+   start_date: "2001-08-21 23:10:00"
+   private: 1
