@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
 
   def rpx_token
     raise "hackers?" unless data = RPXNow.user_data(params[:token])
-    self.current_user = User.find_by_identifier(data[:identifier]) || User.create!(data)
-    puts data.to_yaml
+    session[:current_user] = User.find_by_identifier(data[:identifier]) || User.create!(data)
     redirect_to '/'
   end
 
