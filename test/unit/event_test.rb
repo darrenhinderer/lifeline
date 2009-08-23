@@ -49,7 +49,7 @@ class EventTest < ActiveSupport::TestCase
     sleep(2)
     vent = makeEvent(bill, "DOB Bill")
     vent = makeEvent(bob, "Before Bob")
-    result = Event.latest()
+    result = Event.latest(1)
     assert_not_nil result
     assert_equal 2, result.length
     assert_equal "DOB Bill", result[0].title

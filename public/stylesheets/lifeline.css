@@ -6,7 +6,7 @@ h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
 #content  { width: 1000px; margin-left: 20px; }
 #nav { text-align: right; }
 #lifeline { height: 350px; border: 1px solid #999;}
-#favorites { float:left; height: 100px; border: 1px solid #999; overflow: auto;
+#following { float:left; height: 100px; border: 1px solid #999; overflow: auto;
   margin: 10px 0 0 40px; background-color: #ccf; width: 490px; }
 #profile { float: left; text-align: left; height: 80px; width: 490px;
   border: 1px solid black; margin: 20px 0 0 40px; }
