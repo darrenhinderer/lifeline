@@ -1,7 +1,12 @@
 <% for vent in @latest %>
   <div id="activity_data">
-    <div><%= image_tag vent.user.gravatar_url(:size => 40) %>&nbsp;&nbsp;
+    <div style="display:inline-block;width:70px;">
+      <%= image_tag vent.user.gravatar_url(:size => 60) %>&nbsp;&nbsp;
+    </div>
+    <div style="display:inline-block;vertical-align:top">
+      <br/>
       <%= link_to vent.user.username, vent.user %> added <%=h vent.title %>
-      <%=h vent.get_dates() %></div>
+      <%=h vent.get_dates() %>
+    </div>
   </div>
 <% end %>
