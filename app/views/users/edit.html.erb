@@ -1,21 +1,18 @@
 <% title "Edit Profile" %>
 <h1>Edit Profile</h1>
 
-<p> 
-<%= link_to image_tag(@user.gravatar_url, :border => 0), "http://www.gravatar.com", :popup => true %>
-</p> 
+<div id="edit_profile">
+  <%= link_to image_tag(@user.gravatar_url, :border => 0),
+    "http://www.gravatar.com", :popup => true %>
 
 <% form_for(@user) do |f| %>
-  <%= f.error_messages %>
-
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Save' %>
+    <%= link_to 'Cancel', user_path(@user) %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+</div>

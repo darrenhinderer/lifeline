@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json {
-        data = {"events" => collect_events(@user)}
+        data = {"events" => @user.collect_events}
         render :json => data.to_json
       }
     end
@@ -53,54 +53,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_friendship
-    @user = User.find(session[:user_id])
-    friendship = Friendship.find(params[:id])
-    friendship.selected = !friendship.selected
-    friendship.save
-   
-    respond_to do |format|
-      format.js {
-        render(:update) { |page|
-            page.replace_html :following, :partial => "friendships/following"
-            page.call "loadEventsForUser", @user.id
-          }
-        }
-    end
-  end
-
-  def destroy_friendship
-    @user = User.find(session[:user_id])
-    friendship = Friendship.find(params[:id])
-    friendship.destroy
- 
-    respond_to do |format|
-      format.js {
-        render(:update) { |page|
-            page.replace_html :following, :partial => "friendships/following"
-            page.call "loadEventsForUser", @user.id
-          }
-        }
-    end
-  end
-
-private
-  def collect_events user
-    all_events = []
-    user.events.each do |event|
-      editable = (event.user_id == session[:user_id])
-      all_events << event.to_timeline(editable)
-    end
-    user.friendships.each do |friendship|
-      if friendship.selected
-        more_events = Event.all_public(friendship.friend)
-        more_events.each do |event|
-          editable = (event.user_id == session[:user_id])
-          event.title = "[" + friendship.friend.username + "] " + event.title
-          all_events << event.to_timeline(editable)
-        end
-      end
-    end
-    all_events
-  end
 end

@@ -3,14 +3,13 @@
   <p>
     <%= check_box_tag ("friends[]", friendship.id, friendship.selected,
       :onclick => remote_function( 
-        :url => {:action => 'update_friendship',
-        :id => friendship})) %>
+        :url => friendship_path(friendship), :method => :put)) %>
     <% if !friendship.friend.name.nil? %>
       <%= friendship.friend.name %>
       (<%=link_to friendship.friend.username, user_path(friendship.friend.id)%>)
     <% else %>
       <%= link_to friendship.friend.username, user_path(friendship.friend.id) %>
     <% end %>
-    <%= link_to_remote "stop following", :url => {:action => 'destroy_friendship'        , :id => friendship} %>
+    <%= link_to_remote "stop following", :url => friendship_path(friendship), :method => :delete %>
   </p>
 <% end %>
