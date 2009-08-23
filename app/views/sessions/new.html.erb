@@ -20,6 +20,7 @@
 
 <script type="text/javascript">
 <!--
+   initlatest=true
    copyTickerEvents();
    queryDatabase();
    var over = false;
@@ -38,7 +39,8 @@
    }
    function queryDatabase()
    {
-     jQuery.get("/events", "", queryDatabaseCallback, "html");
+     jQuery.get("/events", "init=" + initlatest, queryDatabaseCallback, "html");
+     initlatest=false
      setTimeout( "queryDatabase();", 5000 );
    }
 //-->
