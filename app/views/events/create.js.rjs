@@ -1,0 +1,2 @@
+page.replace :add_event, :partial => "add"
+page.replace :controls, :partial => "controls"
