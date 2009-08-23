@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th></th>
+    <th>User</th>
+    <th>Title</th>
+    <th>Start</th>
+    <th>End</th>
+  </tr>
+
+<% for vent in @latest %>
+  <tr>
+    <td><%= image_tag vent.user.gravatar_url %></td>
+    <td><%=h vent.user.username %></td>
+    <td><%=h vent.title %></td>
+    <td><%=h vent.start_date.to_s %></td>
+    <td><%=h vent.end_date.to_s %></td>
+  </tr>
+<% end %>
+</table>
