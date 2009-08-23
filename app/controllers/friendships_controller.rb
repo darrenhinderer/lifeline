@@ -15,4 +15,9 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def update
+    puts "TESTING"
+    render_partial :following    
+  end
+
 end

@@ -58,4 +58,22 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
     end
   end
+
+  def update_friendship
+    @user = User.find(session[:user_id])
+    friendship = Friendship.find(params[:id])
+    friendship.selected = !friendship.selected
+    friendship.save
+  
+    if friendship.selected
+      friend = User.find(friendship.friend_id)
+      events = Event.all_public(friend)
+      result = []
+      events.each do |event|
+        result << event.to_timeline
+      end
+      @data = {"events" => result}.to_json
+    end
+    render :partial => 'friendships/following'
+  end
 end
