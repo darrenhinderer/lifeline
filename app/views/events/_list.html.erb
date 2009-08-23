@@ -1,13 +1,3 @@
-<table id="activity">
-  <tr>
-    <th></th>
-    <th>User</th>
-    <th>Title</th>
-    <th>Start</th>
-    <th>End</th>
-  </tr>
-
-  <div id="ticker">
 <% for vent in @latest %>
     <tr>
       <td><%= image_tag vent.user.gravatar_url(:size => 40) %></td>
@@ -17,5 +7,3 @@
       <td><%=h vent.end_date.to_s %></td>
     </tr>
 <% end %>
-  </div>
-</table>
