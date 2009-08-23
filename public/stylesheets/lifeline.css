@@ -11,7 +11,7 @@ h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
 #profile { float: left; text-align: left; height: 80px; width: 490px;
   border: 1px solid black; margin: 20px 0 0 40px; }
 #profile img{ float: left; margin-right: 20px;}
-#event { float:left; margin: 20px 0; padding: 5px;
+#event { float:left; margin: 20px 0; padding: 5px; width: 455px;
   border: 1px solid #666; background-color: #eee; }
 #event form label {
   display:block;
