@@ -2,6 +2,6 @@
   <div id="activity_data">
     <div><%= image_tag vent.user.gravatar_url(:size => 40) %>&nbsp;&nbsp;
       <%= link_to vent.user.username, vent.user %> added <%=h vent.title %>
-      from <%=h vent.start_date.to_s %> to <%=h vent.end_date.to_s %></div>
+      <%=h vent.get_dates() %></div>
   </div>
 <% end %>

@@ -56,4 +56,19 @@ class Event < ActiveRecord::Base
     tmp_h.update({ :end => end_date.utc.to_s}) unless end_date.nil?
     return tmp_h
   end
+
+  def get_dates()
+    if self.start_date.nil?
+      return ""
+    end
+    retstr = "from "
+    if self.end_date.nil?
+      retstr = "on "
+    end
+    retstr += self.start_date.strftime("%B %d, %Y")
+    if self.end_date.nil?
+      return retstr
+    end
+    return retstr + " to " + self.end_date.strftime("%B %d, %Y")
+  end
 end
