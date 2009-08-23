@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   is_gravtastic!
 
   def self.search(search, page)
-    paginate :per_page => 2, :page => page,
+    paginate :per_page => 10, :page => page,
              :conditions => ['username like ? or email like ?', 
              "%#{search}%", "%#{search}%"], :order => 'username'
   end

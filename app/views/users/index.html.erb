@@ -2,23 +2,25 @@
 
 <h1>User Search</h1>
 
-<% form_tag(users_path(@plan), :method => :get) do -%>
+<% form_tag(users_path, :method => :get) do -%>
   <input name="query" type="text" value="<%=params[:query]%>" />
   <input type="submit" value="Search users" />
 <% end -%>
 
 <table>
   <tr>
-    <th>Username</th>
-    <th>Name</th>
-    <th>Email</th>
-    <% if !session[:user_id].nil? %>
+    <th style="width:80px"></th>
+    <th style="width:200px">Username</th>
+    <th style="width:200px;">Name</th>
+    <th style="width:200px">Email</th>
+    <% if session[:user_id] %>
       <th></th>
     <% end %>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= image_tag user.gravatar_url %></td>
     <td><%= link_to user.username, user %></td>
     <td><%=h user.name %></td>
     <td><%=h user.email %></td>
