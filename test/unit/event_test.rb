@@ -41,4 +41,18 @@ class EventTest < ActiveSupport::TestCase
     result = Event.all_public(bob)
     assert_equal 2, result.length
   end
+
+  def test_getLatest
+    bill = makeUser("bill")
+    bob = makeUser("bob")
+    vent = makeEvent(bob, "DOB Bob")
+    sleep(2)
+    vent = makeEvent(bill, "DOB Bill")
+    vent = makeEvent(bob, "Before Bob")
+    result = Event.latest()
+    assert_not_nil result
+    assert_equal 2, result.length
+    assert_equal "DOB Bill", result[0].title
+    assert_equal "Before Bob", result[1].title
+  end
 end
