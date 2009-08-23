@@ -1,3 +1,8 @@
+<% import_javascript(:defaults,
+                     "timeline_js/timeline-api.js?bundle=true",
+                     "calendar_date_select/calendar_date_select.js")%>
+<% title "#{@user.username}'s timeline" %>
+
 <div id="gravatar">
   <%= image_tag @user.gravatar_url %>
   <%= link_to "Edit Profile", edit_user_path(session[:user_id]) %>
@@ -18,6 +23,10 @@
   <% for fav in @user.friends %>
     <%= check_box_tag("favs[]", fav.id, false) %><%= fav.username %>
   <% end %>
+</div>
+
+<div id="controls">
+  <%= render :partial => "events/controls" %>
 </div>
 
 <% if @user.id == session[:user_id] %>
