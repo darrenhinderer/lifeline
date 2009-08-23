@@ -52,7 +52,8 @@ function loadEventsForUser(user_id) {
 }
 
 function loadEvent(data) {
-  eventSource.loadJSON(data, "");
+  if (eventSource)
+    eventSource.loadJSON(data, "");
 }
 
 var resizeTimerID = null;
@@ -60,7 +61,7 @@ function onResize() {
     if (resizeTimerID == null) {
         resizeTimerID = window.setTimeout(function() {
             resizeTimerID = null;
-            tl.layout();
+//            tl.layout();
         }, 500);
     }
 }

@@ -1,14 +1,18 @@
+<%= javascript_include_tag "jquery-1.3.2" %>
 <% title "User Search" %>
 
 <h1>User Search</h1>
-<%= javascript_include_tag "jquery-1.3.2" %>
+<div id="search_text">
+  <p>View other people's lifelines and compare them to your own!</p>
+  <p>Who do you want to search for?</p>
+</div>
 
 <% form_tag(users_path, :method => :get) do -%>
   <input name="query" type="text" value="<%=params[:query]%>" />
-  <input type="submit" value="Search users" />
-<% end -%>
+  <input type="submit" value="Search" />
+<% end %>
 
-<table>
+<table id="results">
   <tr>
     <th style="width:80px"></th>
     <th style="width:200px">Username</th>
@@ -18,7 +22,6 @@
       <th></th>
     <% end %>
   </tr>
-
 <% @users.each do |user| %>
   <tr>
     <td><%= image_tag user.gravatar_url %></td>
@@ -30,7 +33,8 @@
        <% if @current_user.id == user.id %>
          You!
        <% elsif !@current_user.is_friend?(user) %>
-         <%= link_to "Follow", friendships_path(:friend_id => user), :method => :post %>
+         <%= link_to "Follow", friendships_path(:friend_id => user),
+           :method => :post %>
        <% else @current_user.is_friend?(user)  %>
          Following
        <% end %>
@@ -39,12 +43,16 @@
   </tr>
 <% end %>
 </table>
+
 <p>
-<%= will_paginate @users %>
+  <%= will_paginate @users %>
 </p>
 
+<div id="activity">
+   <%= render :partial => "events/list" %>
+</div>
 
-<div id="activity" >
+<dif id="test">
    <h1>Real time activity</span></h1>
    <ul id="ticker" onmouseover="over=true;return false;" onMouseout="over=false;return false;" >
       <li></li>

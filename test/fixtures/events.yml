@@ -4,6 +4,7 @@ one:
    content: "The music next door is loud"
    start_date: "2009-08-21 23:10:00"
    end_date: "2009-08-21 23:10:00"
+   modification: "2009-08-21 23:10:00"
    private: true
 
 two:
@@ -11,6 +12,7 @@ two:
    title: "Goodnight World"
    content: "Test"
    start_date: "2007-08-21 23:10:00"
+   modification: "2007-08-21 23:10:00"
    private: true
 
 three:
@@ -18,6 +20,7 @@ three:
    title: "Hi One"
    content: "Test"
    start_date: "2008-08-21 23:10:00"
+   modification: "2008-08-21 23:10:00"
    private: true
 
 four:
@@ -25,6 +28,7 @@ four:
    title: "Hi Two"
    content: "Test"
    start_date: "2009-08-01 13:10:00"
+   modification: "2009-08-01 13:10:00"
    private: true
 
 four:
@@ -32,6 +36,7 @@ four:
    title: "Event Four"
    content: "2009-08-16 23:10:00"
    start_date: "2009-08-26 23:10:00"
+   modification: "2009-08-26 23:10:00"
    private: false
 
 five:
@@ -40,4 +45,5 @@ five:
    content: "2009-08-12 23:10:00"
    start_date: "2009-08-12 23:10:00"
    end_date: "2009-08-12 23:10:00"
+   modification: "2009-08-12 23:10:00"
    private: false

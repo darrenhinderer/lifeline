@@ -3,7 +3,11 @@
                      "calendar_date_select/calendar_date_select.js")%>
 <% title "#{@user.username}'s timeline" %>
 
-<div id="gravatar">
+<% if @user.id == session[:user_id] %>
+  <%= render :partial => "events/add" %>
+<% end %>
+
+<div id="profile">
   <%# image_tag @user.gravatar_url %>
   <% if session[:user_id] && session[:user_id] == @user.id %>
   <%= link_to "Edit Profile", edit_user_path(session[:user_id]) %>
@@ -19,18 +23,18 @@
   </p>
 </div>
 
-<div id="lifeline"></div>
-
-<div id="favorites">
-  <% for fav in @user.friends %>
-    <%= check_box_tag("favs[]", fav.id, false) %><%= fav.username %>
-  <% end %>
+<div id="following">
+  <%= render :partial => "friendships/following" %>
 </div>
+
+<div id="clear"></div>
+
+<div id="lifeline"></div>
 
 <div id="controls">
   <%# render :partial => "events/controls" %>
 </div>
 
-<% if @user.id == session[:user_id] %>
-  <%= render :partial => "events/add" %>
-<% end %>
+<script>
+loadEventsForUser(<%= @user.id %>);
+</script>

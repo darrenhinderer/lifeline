@@ -1,13 +1,18 @@
 @import url(reset.css);
 
-body { font-size: 13px; }
+body { font-size: 13px; background-color: #CDE5E6;}
 h1 { font-size: 16px; font-weight: bold; }
-#content  { width: 900px; margin-left: 20px; }
-#lifeline { height: 350px; border: 1px solid #aaa; }
+h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
+#content  { width: 1000px; margin-left: 20px; }
 #nav { text-align: right; }
-#gravatar { text-align: left; height: 80px; margin: 10px 0; }
-#gravatar img{ float: left; margin-right: 20px; }
-#event { margin-top: 20px; }
+#lifeline { height: 350px; border: 1px solid #999;}
+#following { float:left; height: 100px; border: 1px solid #999; overflow: auto;
+  margin: 10px 0 0 40px; background-color: #ccf; width: 490px; }
+#profile { float: left; text-align: left; height: 80px; width: 490px;
+  border: 1px solid black; margin: 20px 0 0 40px; }
+#profile img{ float: left; margin-right: 20px;}
+#event { float:left; margin: 20px 0; padding: 5px; width: 455px;
+  border: 1px solid #666; background-color: #eee; }
 #event form label {
   display:block;
   float:left;
@@ -15,7 +20,20 @@ h1 { font-size: 16px; font-weight: bold; }
   margin-right: 10px;
   text-align: right;
   font-weight:bold;
+  font-size: 11px;
 }
-#event form p { padding: 2px 0; }
+#event input { font-size: 10px; }
+#event form p { padding: 1px 0; }
 #event_start_date, #event_end_date { width: 210px; }
 #errors {color: red; }
+.buttons { text-align: center; }
+
+#results { margin: 20px 0; width: 800px; border: 1px solid #666; }
+#results th {background-color: #ccc; padding: 5px; }
+#results td {padding: 2px; border-bottom: 1px dashed #666; }
+
+#activity { margin-top: 10px; }
+
+#search_text p { margin: 5px; }
+
+#clear { clear: both; }
