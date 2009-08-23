@@ -70,6 +70,16 @@ class UsersController < ApplicationController
     render :partial => 'friendships/following'
   end
 
+  def destroy_friendship
+    @user = User.find(session[:user_id])
+    friendship = Friendship.find(params[:id])
+    friendship.destroy
+ 
+    all_events = collect_events(@user)
+    @data = {"events" => all_events}.to_json
+    render :partial => 'friendships/following'
+  end
+
 private
   def collect_events user
     all_events = []
