@@ -19,11 +19,13 @@
     <div id="nav">
       [ 
         <% if session[:user_id] %>
-        <%= link_to "Home", user_path(session[:user_id])%> |
+          <%= link_to "Home", user_path(session[:user_id])%> |
         <% end %>
-        <%= link_to "Search", users_path %> 
+        <%= link_to "Search", users_path %> |
         <% if session[:user_id] %>
-        | <%= link_to "Logout", {:controller => :sessions, :action => :destroy}%> 
+          <%= link_to "Logout", {:controller => :sessions, :action => :destroy}%> 
+        <% else %>
+          <%= link_to "Signup/Login", {:controller => :sessions, :action => :new}%> 
         <% end %>
       ]
     </div>

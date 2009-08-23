@@ -1,22 +1,9 @@
 class EventsController < ApplicationController
   ActionView::Base.field_error_proc = proc { |input, instance| input }
 
-  def index
-    render :text => "nothing to see here, move along folks"
-  end
-
-  def show
-    @event = Event.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
   def new
     @event = Event.new
     respond_to do |format|
-      format.html # new.html.erb
       format.js {
         render(:update) { |page| page.replace :event, :partial => "add" }
       }
@@ -26,7 +13,6 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     respond_to do |format|
-      format.html # edit.html.erb
       format.js {
         render(:update) { |page| page.replace :event, :partial => "edit" }
       }
@@ -64,7 +50,6 @@ class EventsController < ApplicationController
           }
         }
       else
-        format.html { render :action => "edit" }
         format.js {
           render(:update) { |page| page.replace :event, :partial => "edit" }
         }
@@ -77,7 +62,12 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(user_path(session[:user_id])) }
+      format.js {
+        render(:update) { |page| 
+          page.replace :event, :partial => "add" 
+          page.call "loadEventsForUser", @event.user.id
+        }
+      }
     end
   end
 end
