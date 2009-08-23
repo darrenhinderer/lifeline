@@ -47,7 +47,9 @@ class User < ActiveRecord::Base
         more_events.each do |event|
           editable = false
           event.title = "[" + friendship.friend.username + "] " + event.title
-          all_events << event.to_timeline(editable)
+          colored = event.to_timeline(editable)
+          colored.update({:color => "#099"})
+          all_events << colored
         end
       end
     end
