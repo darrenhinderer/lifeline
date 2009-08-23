@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   ActionView::Base.field_error_proc = proc { |input, instance| input }
 
   def new
-    @event = Event.new
+    @event = Event.new(:start_date => Time.now)
     respond_to do |format|
       format.js {
         render(:update) { |page| page.replace :event, :partial => "add" }
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        @event = Event.new
+        @event = Event.new(:start_date => Time.now)
         format.html { redirect_to(@event) }
       else
         format.html { render :action => "new" }
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        @event = Event.new
+        @event = Event.new(:start_date => Time.now)
         format.html { redirect_to(@event) }
         format.js {
           render(:update) { |page|

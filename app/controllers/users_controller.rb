@@ -17,16 +17,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @event = Event.new
-
+    @event = Event.new(:start_date => Time.now)
     respond_to do |format|
       format.html # show.html.erb
       format.json {
-        events = []
-        editable = (@user.id == session[:user_id])
-        @events = Event.all_public(@user)
-        events = collect_events(@user)
-        data = {"events" => events }
+        data = {"events" => collect_events(@user)}
         render :json => data.to_json
       }
     end
@@ -92,13 +87,15 @@ private
   def collect_events user
     all_events = []
     user.events.each do |event|
-      all_events << event.to_timeline
+      editable = (event.user_id == session[:user_id])
+      all_events << event.to_timeline(editable)
     end
     user.friendships.each do |friendship|
       if friendship.selected
         more_events = Event.all_public(friendship.friend)
         more_events.each do |event|
-          all_events << event.to_timeline
+          editable = (event.user_id == session[:user_id])
+          all_events << event.to_timeline(editable)
         end
       end
     end

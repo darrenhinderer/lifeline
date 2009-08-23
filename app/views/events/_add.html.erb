@@ -1,6 +1,5 @@
 <div id="event">
   <h2> Add a new event to your lifeline</h2>
-  <p id="errors"><%= @event.errors.full_messages %></p>
   <% form_remote_for @event do |f| %>
     <p>
       <%= f.label :title %>
@@ -8,7 +7,8 @@
     </p>
     <p>
       <%= f.label :start_date %>
-      <%= f.calendar_date_select :start_date, :popup => "force" %>
+      <%= f.calendar_date_select :start_date, :popup => "force",
+        :buttons => :false %>
     </p>
     <p>
       <%= f.label :end_date %>
@@ -25,7 +25,7 @@
 
     <p class="buttons">
       <%= f.submit "Add" %>
-      <%= link_to_function "Clear", "$('new_event').reset()" %>
+      <%# link_to_function "Clear", "$('new_event').reset()" %>
     </p>
   <% end %>
 </div>
