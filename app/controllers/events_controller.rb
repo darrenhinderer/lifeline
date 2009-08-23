@@ -15,15 +15,22 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-
     respond_to do |format|
       format.html # new.html.erb
+      format.js {
+        render(:update) { |page| page.replace :event, :partial => "add" }
+      }
     end
   end
 
   def edit
-puts "EDIT: #{params[:id]}"
     @event = Event.find(params[:id])
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.js {
+        render(:update) { |page| page.replace :event, :partial => "edit" }
+      }
+    end
   end
 
   def create
@@ -36,33 +43,43 @@ puts "EDIT: #{params[:id]}"
         @data = {"events" => [@event.to_timeline]}.to_json
         @event = Event.new
         format.html { redirect_to(@event) }
-        format.js   {
-          render(:update) { |page| page.replace :add_event, :partial => "add" }
+        format.js {
+          render(:update) { |page|
+            page.replace :event, :partial => "add"
+            page.call "loadEvent", @data
+          }
         }
       else
-        format.js   {
-          render(:update) { |page| page.replace :add_event, :partial => "add" }
-        }
         format.html { render :action => "new" }
       end
     end
   end
 
   def update
+    user = User.find(session[:user_id])
     @event = Event.find(params[:id])
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        flash[:notice] = 'Event was successfully updated.'
+        @event = Event.new
         format.html { redirect_to(@event) }
+        format.js {
+	  @data = {"events" => user.events}.to_json
+          render(:update) { |page|
+            page.replace :event, :partial => "add"
+            page.call "reloadEvents", @data 
+          }
+        }
       else
         format.html { render :action => "edit" }
+        format.js {
+          render(:update) { |page| page.replace :event, :partial => "edit" }
+        }
       end
     end
   end
 
   def destroy
-    puts "DESTROY: #{params[:id]}"
     @event = Event.find(params[:id])
     @event.destroy
 

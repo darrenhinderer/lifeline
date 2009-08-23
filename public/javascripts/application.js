@@ -47,8 +47,11 @@ function onLoad(events) {
   eventSource.loadJSON(events, "");
 }
 
-function loadEvent(events) {
-  if (eventSource)
+function loadEvent(data) {
+  eventSource.loadJSON(data, "");
+}
+function reloadEvents(events) {
+    eventSource.clear();
     eventSource.loadJSON(events, "");
 }
 
