@@ -1,3 +1,43 @@
+<%= javascript_include_tag "jquery-1.3.2" %>
 <h1>Life-line.me</h1>
 
 <%=RPXNow.embed_code('lifeline',rpx_token_sessions_url)%>
+
+<h1>Real time activity</h1>
+
+<div id="activity">
+  <div id="ticker" onmouseover="over=true;return false;" onMouseout="over=false;return false;" >
+  </div>
+</div>
+
+<div id="eventListInvisContainer" style="display:none">
+</div>
+
+<div id="bucket" style="display:none">
+</div>
+
+<script type="text/javascript">
+<!--
+   copyTickerEvents();
+   queryDatabase();
+   var over = false;
+   function copyTickerEvents()
+   {
+     $('#eventListInvisContainer > div').appendTo("#bucket");
+     if( !over )         
+       $('#bucket > div:eq(0)').hide().prependTo("#ticker").slideDown(150);
+     $('#ticker > div:eq(15)').slideUp(150);
+     $('#ticker > div:eq(16)').remove();
+     setTimeout( "copyTickerEvents();", 500 );
+   }
+   function queryDatabaseCallback(data, textStatus)
+   {
+     $('#eventListInvisContainer').html(data);
+   }
+   function queryDatabase()
+   {
+     jQuery.get("/events", "", queryDatabaseCallback, "html");
+     setTimeout( "queryDatabase();", 5000 );
+   }
+//-->
+</script>

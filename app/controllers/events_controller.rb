@@ -1,8 +1,12 @@
 class EventsController < ApplicationController
   ActionView::Base.field_error_proc = proc { |input, instance| input }
 
+  def index
+    @latest = Event.latest(5)
+  end
+
   def new
-    @event = Event.new(:start_date => Time.now)
+    @event = Event.new(:start_date => Date.today)
     respond_to do |format|
       format.js {
         render(:update) { |page| page.replace :event, :partial => "add" }
@@ -23,10 +27,13 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @user = User.find(session[:user_id])
     @event.user = @user
+puts @event.start_date
+puts @event.start_date.class
+puts @event.start_date.to_time
 
     respond_to do |format|
       if @event.save
-        @event = Event.new(:start_date => Time.now)
+        @event = Event.new(:start_date => Date.today)
         format.html { redirect_to(@event) }
       else
         format.html { render :action => "new" }
@@ -41,7 +48,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        @event = Event.new(:start_date => Time.now)
+        @event = Event.new(:start_date => Date.today)
         format.html { redirect_to(@event) }
         format.js {
           render(:update) { |page|
@@ -62,7 +69,7 @@ class EventsController < ApplicationController
     @event.destroy
     user = @event.user
 
-    @event = Event.new(:start_date => Time.now)
+    @event = Event.new(:start_date => Date.today)
     respond_to do |format|
       format.js {
         render(:update) { |page| 

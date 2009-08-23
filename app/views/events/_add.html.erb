@@ -8,11 +8,13 @@
     </p>
     <p>
       <%= f.label :start_date %><br/>
-      <%= f.calendar_date_select :start_date, :popup => "force" %>
+      <%= f.calendar_date_select :start_date, :popup => "force", 
+          :time => false, :buttons => false %>
     </p>
     <p>
       <%= f.label :end_date %><br/>
-      <%= f.calendar_date_select :end_date, :popup => "force" %>
+      <%= f.calendar_date_select :end_date, :popup => "force",
+          :time => false, :buttons => false %>
     </p>
     <p >
       <%= f.submit " Add New Event", :class => "ui-button ui-state-hover ui-corner-all" %>

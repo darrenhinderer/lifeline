@@ -1,21 +1,7 @@
-<table id="activity">
-  <tr>
-    <th></th>
-    <th>User</th>
-    <th>Title</th>
-    <th>Start</th>
-    <th>End</th>
-  </tr>
-
-  <div id="ticker">
 <% for vent in @latest %>
-    <tr>
-      <td><%= image_tag vent.user.gravatar_url(:size => 40) %></td>
-      <td><%= link_to vent.user.username, vent.user %></td>
-      <td><%=h vent.title %></td>
-      <td><%=h vent.start_date.to_s %></td>
-      <td><%=h vent.end_date.to_s %></td>
-    </tr>
-<% end %>
+  <div id="activity_data">
+    <div><%= image_tag vent.user.gravatar_url(:size => 40) %>&nbsp;&nbsp;
+      <%= link_to vent.user.username, vent.user %> added <%=h vent.title %>
+      from <%=h vent.start_date.to_s %> to <%=h vent.end_date.to_s %></div>
   </div>
-</table>
+<% end %>

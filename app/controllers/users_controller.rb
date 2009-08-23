@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
 
   def index
-    @latest = Event.init_latest()
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
-  def search
     @users = User.search(params[:query], params[:page])
     @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
     respond_to do |format|
@@ -17,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @event = Event.new(:start_date => Time.now)
+    @event = Event.new(:start_date => Date.today)
     respond_to do |format|
       format.html # show.html.erb
       format.json {
