@@ -8,11 +8,11 @@
     <p>
       <%= f.label :start_date %>
       <%= f.calendar_date_select :start_date, :popup => "force",
-        :buttons => :false %>
+        :time => false, :buttons => :false %>
     </p>
     <p>
       <%= f.label :end_date %>
-      <%= f.calendar_date_select :end_date, :popup => "force" %>
+      <%= f.calendar_date_select :end_date, :popup => "force", :time => false %>
     </p>
     <p>
       <%= f.label :content, "Details" %>
