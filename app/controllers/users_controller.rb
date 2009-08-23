@@ -97,5 +97,6 @@ private
         end
       end
     end
+    all_events
   end
 end
