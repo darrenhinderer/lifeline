@@ -96,6 +96,7 @@ private
         more_events = Event.all_public(friendship.friend)
         more_events.each do |event|
           editable = (event.user_id == session[:user_id])
+          event.title = "[" + friendship.friend.username + "] " + event.title
           all_events << event.to_timeline(editable)
         end
       end
