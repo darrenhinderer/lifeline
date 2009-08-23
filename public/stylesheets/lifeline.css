@@ -453,7 +453,6 @@ h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
 //#event form p { padding: 1px 0; }
 //#event_start_date, #event_end_date { width: 210px; }
 #errors {color: red; }
-.buttons { text-align: center; }
 
 #results { margin: 20px 0; width: 800px; border: 1px solid #666; }
 #results th {background-color: #ccc; padding: 5px; }
