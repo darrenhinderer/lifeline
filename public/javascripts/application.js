@@ -24,7 +24,7 @@ function loadEventsForUser(user_id) {
   bandInfos[1].syncWith = 0;
   bandInfos[1].highlight = true;
   tl = Timeline.create(document.getElementById("lifeline"), bandInfos);
-  url = "http://localhost:3000/users/" + user_id + ".json";
+  url = location.protocol + "//" + location.host + "/users/" + user_id + ".json";
   Timeline.loadJSON(url, function(data, url) {
    eventSource.clear();
    eventSource.loadJSON(data, url); 

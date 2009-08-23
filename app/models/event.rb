@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   before_validation :set_modification
   belongs_to :user
-  validates_presence_of :title, :start_date, :modification, :user_id
+  validates_presence_of :start_date, :modification, :user_id
 
   def set_modification()
     self.modification = DateTime.now

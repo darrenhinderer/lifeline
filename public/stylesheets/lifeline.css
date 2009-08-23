@@ -3,13 +3,14 @@
 body { font-size: 13px; background-color: #CDE5E6;}
 h1 { font-size: 16px; font-weight: bold; }
 h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
-#content  { width: 1000px; margin-left: 20px; }
+#content  { position:relative; width: 1000px; margin-left: 20px; }
 #nav { text-align: right; }
+#topright { width: 460px; float:right; }
 #lifeline { height: 350px; border: 1px solid #999;}
-#following { float:left; height: 100px; border: 1px solid #999; overflow: auto;
-  margin: 10px 0 0 40px; background-color: #ccf; width: 490px; }
-#profile { float: left; text-align: left; height: 80px; width: 490px;
-  border: 1px solid black; margin: 20px 0 0 40px; }
+#profile { height: 80px; border: 1px solid black; margin-top: 20px; }
+#profile #username { margin-top: 10px; }
+#following { height: 100px; border: 1px solid #999; overflow: auto;
+  margin: 10px 0 20px 0; background-color: #ccf; }
 #profile img{ float: left; margin-right: 20px;}
 #event { float:left; margin: 20px 0; padding: 5px; width: 455px;
   border: 1px solid #666; background-color: #eee; }

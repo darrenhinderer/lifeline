@@ -1,13 +1,14 @@
 <div id="event">
   <h2> Edit this event </h2>
-  <p id="errors"><%= @event.errors.full_messages %></p> <% form_remote_for @event do |f| %>
+  <% form_remote_for @event do |f| %>
     <p>
       <%= f.label :title %>
       <%= f.text_field :title %>
     </p>
     <p>
       <%= f.label :start_date %>
-      <%= f.calendar_date_select :start_date, :popup => "force" %>
+      <%= f.calendar_date_select :start_date, :popup => "force",
+        :buttons => :false %>
     </p>
     <p>
       <%= f.label :end_date %>
@@ -15,7 +16,7 @@
     </p>
     <p>
       <%= f.label :content %>
-      <%= f.text_area :content, :rows => 3 %>
+      <%= f.text_area :content, :rows => 2 %>
     </p>
     <p>
       <%= f.label :private, "Make event private" %>
