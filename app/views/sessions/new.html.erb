@@ -1,5 +1,7 @@
 <%= javascript_include_tag "jquery-1.3.2" %>
-<h1>Life-line.me</h1>
+<div id="logo">
+  <%= image_tag "life-line-logo.png", :alt => "Life-line.me" %>
+</div>
 
 <%=RPXNow.embed_code('lifeline',rpx_token_sessions_url)%>
 
