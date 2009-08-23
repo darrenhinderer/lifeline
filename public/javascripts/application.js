@@ -1,7 +1,7 @@
 var tl;
 var eventSource;
 
-function onLoad(events) {
+function loadEventsForUser(user_id) {
   eventSource = new Timeline.DefaultEventSource(); 
   var oldFillInfoBubble = 
     Timeline.DefaultEventSource.Event.prototype.fillInfoBubble;
@@ -44,7 +44,11 @@ function onLoad(events) {
   bandInfos[1].syncWith = 0;
   bandInfos[1].highlight = true;
   tl = Timeline.create(document.getElementById("lifeline"), bandInfos);
-  eventSource.loadJSON(events, "");
+  url = "http://localhost:3000/users/" + user_id + ".json";
+  Timeline.loadJSON(url, function(data, url) {
+   eventSource.clear();
+   eventSource.loadJSON(data, url); 
+  });
 }
 
 function loadEvent(data) {
@@ -52,18 +56,12 @@ function loadEvent(data) {
     eventSource.loadJSON(data, "");
 }
 
-function reloadEvents(events) {
-  alert('clearing');
-  eventSource.clear();
-  eventSource.loadJSON(events, "");
-}
-
 var resizeTimerID = null;
 function onResize() {
     if (resizeTimerID == null) {
         resizeTimerID = window.setTimeout(function() {
             resizeTimerID = null;
-            tl.layout();
+//            tl.layout();
         }, 500);
     }
 }

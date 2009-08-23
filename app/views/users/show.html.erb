@@ -1,5 +1,5 @@
 <% import_javascript(:defaults,
-                     "timeline_js/timeline-api.js?bundle=true",
+                     "timeline_js/timeline-api.js",
                      "calendar_date_select/calendar_date_select.js")%>
 <% title "#{@user.username}'s timeline" %>
 
@@ -8,8 +8,10 @@
 <% end %>
 
 <div id="profile">
-  <%= image_tag @user.gravatar_url %>
+  <%# image_tag @user.gravatar_url %>
+  <% if session[:user_id] && session[:user_id] == @user.id %>
   <%= link_to "Edit Profile", edit_user_path(session[:user_id]) %>
+  <% end %>
   <p> 
     <b>Username:</b> <%=h @user.username %>
   </p>
@@ -30,5 +32,9 @@
 <div id="lifeline"></div>
 
 <div id="controls">
-  <%= render :partial => "events/controls" %>
+  <%# render :partial => "events/controls" %>
 </div>
+
+<script>
+loadEventsForUser(<%= @user.id %>);
+</script>

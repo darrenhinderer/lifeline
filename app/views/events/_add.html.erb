@@ -1,6 +1,5 @@
 <div id="event">
   <h2> Add a new event to your lifeline</h2>
-  <script>loadEvent(<%= @data %>);</script>
   <p id="errors"><%= @event.errors.full_messages %></p>
   <% form_remote_for @event do |f| %>
     <p>
