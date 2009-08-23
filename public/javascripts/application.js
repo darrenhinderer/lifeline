@@ -104,6 +104,7 @@ var customBubble =  function(elmt, theme, labeller) {
           'evalScripts:true, method: \'get\'}); return false;">Edit</a>';
         var deleteLink = '<a href="#" onclick="if (' +
           'confirm(\'Are you sure?\')) {' +
+            'SimileAjax.WindowManager.cancelPopups();' +
           'new Ajax.Request(\'/events/' + eventObject.getID() + '\', ' +
           '{asynchronous:true, evalScripts:true, method: \'delete\'}); }; ' +
           'return false;">Delete</a>';
