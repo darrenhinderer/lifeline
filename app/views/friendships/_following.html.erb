@@ -1,4 +1,4 @@
-<h2>Following:</h2>
+<b>Following:</b>
 <% for friendship in @user.friendships %>
   <p>
     <%= check_box_tag ("friends[]", friendship.id, friendship.selected,

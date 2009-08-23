@@ -1,31 +1,35 @@
 <div id="event">
-  <h2> Add a new event to your lifeline</h2>
+  <div class="ui-widget-content" style="padding:15px;background:#fff;">
   <% form_remote_for @event do |f| %>
+    <div>
     <p>
-      <%= f.label :title %>
+      <%= f.label :title %><br/>
       <%= f.text_field :title %>
     </p>
     <p>
-      <%= f.label :start_date %>
-      <%= f.calendar_date_select :start_date, :popup => "force",
-        :buttons => :false %>
+      <%= f.label :start_date %><br/>
+      <%= f.calendar_date_select :start_date, :popup => "force" %>
     </p>
     <p>
-      <%= f.label :end_date %>
+      <%= f.label :end_date %><br/>
       <%= f.calendar_date_select :end_date, :popup => "force" %>
     </p>
+    <p >
+      <%= f.submit " Add New Event", :class => "ui-button ui-state-hover ui-corner-all" %>
+    </p>
+    </div>
+    <div style="background:#eee;padding:5px;" class="ui-widget-content ui-corner-all">
+    <b>Optional Details</b>
     <p>
-      <%= f.label :content, "Details" %>
+      <%= f.label :content, "Details" %><br/>
       <%= f.text_area :content, :rows => 2 %>
     </p>
     <p>
       <%= f.label :private, "Make event private" %>
       <%= f.check_box :private %>
     </p>
+    </div>
 
-    <p class="buttons">
-      <%= f.submit "Add" %>
-      <%# link_to_function "Clear", "$('new_event').reset()" %>
-    </p>
   <% end %>
+    </div>
 </div>

@@ -8,17 +8,13 @@
 <% end %>
 
 <div id="topright">
-<div id="profile">
+<div id="profile" class="ui-widget-content ui-corner-all">
   <%= image_tag @user.gravatar_url %>
-  <p id="username"> 
-    <b>Username:</b> <%=h @user.username %>
-  </p>
-  <p>
-    <b>Name:</b> <%=h @user.name %>
-  </p>
-  <p> 
-    <b>Email:</b> <%=h @user.email %>
-  </p>
+  <table>
+  <tr><td align="right"><b>Username:</b></td><td><%=h @user.username %></td></tr>
+  <tr><td align="right"><b>Name:</b></td><td><%=h @user.name %></td></tr>
+  <tr><td align="right"><b>Email:</b></td><td><%=h @user.email %></td></tr>
+  </table>
   <% if session[:user_id] && session[:user_id] == @user.id %>
     <%= link_to "Edit Profile", edit_user_path(session[:user_id]) %>
   <% end %>
