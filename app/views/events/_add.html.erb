@@ -16,11 +16,8 @@
       <%= f.calendar_date_select :end_date, :popup => "force",
           :time => false, :buttons => false %>
     </p>
-    <p >
-      <%= f.submit " Add New Event", :class => "ui-button ui-state-hover ui-corner-all" %>
-    </p>
-    </div>
-    <div style="background:#eee;padding:5px;" class="ui-widget-content ui-corner-all">
+    <div id="optional" style="background:#eee;padding:5px;display:none;"
+      class="ui-widget-content ui-corner-all">
     <b>Optional Details</b>
     <p>
       <%= f.label :content, "Details" %><br/>
@@ -29,6 +26,13 @@
     <p>
       <%= f.label :private, "Make event private" %>
       <%= f.check_box :private %>
+    </p>
+    </div>
+    <p >
+      <%= f.submit " Add New Event", 
+        :class => "ui-button ui-state-hover ui-corner-all" %>
+      <%= link_to_function "Show/Hide Optional Details",
+        "$('optional').toggle()", :id => "optional_toggle" %>
     </p>
     </div>
 
