@@ -406,9 +406,10 @@
 .ui-tabs .ui-tabs-hide { display: none !important; }
 
 
-body { font-size: 13px; background-color: #cc9;}
+body { font-size: 13px; background-color: #399;}
 h1 { font-size: 16px; font-weight: bold; }
 h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
+a  { color: #006; font-weight: bold;}
 #content  { position:relative; width: 1000px; margin-left: 20px; }
 #nav { text-align: right; }
 #topright { width: 460px; float:right; }
