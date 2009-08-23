@@ -1,4 +1,3 @@
-<%= javascript_include_tag "jquery-1.3.2" %>
 <% title "User Search" %>
 
 <h1>User Search</h1>
@@ -14,7 +13,7 @@
 
 <table id="results">
   <tr>
-    <th style="width:80px"></th>
+    <th style="width:40px"></th>
     <th style="width:200px">Username</th>
     <th style="width:200px;">Name</th>
     <th style="width:200px">Email</th>
@@ -24,7 +23,7 @@
   </tr>
 <% @users.each do |user| %>
   <tr>
-    <td><%= image_tag user.gravatar_url %></td>
+    <td><%= image_tag user.gravatar_url(:size => 40) %></td>
     <td><%= link_to user.username, user %></td>
     <td><%=h user.name %></td>
     <td><%=h user.email %></td>
@@ -47,46 +46,3 @@
 <p>
   <%= will_paginate @users %>
 </p>
-
-<div id="activity">
-   <%= render :partial => "events/list" %>
-</div>
-
-<dif id="test">
-   <h1>Real time activity</span></h1>
-   <ul id="ticker" onmouseover="over=true;return false;" onMouseout="over=false;return false;" >
-      <li></li>
-      <li style="visibility:hidden"></li>
-   </ul>
-   <p></p>
-   <ul id="eventListInvisContainer" style="display:none">
-     <li>One</li>
-     <li>Two</li>
-     <li>Three</li>
-     <li>Four</li>
-     <li>Five</li>
-     <li>Six</li>
-     <li>Seven</li>
-     <li>Eight</li>
-     <li>Nine</li>
-     <li>Ten</li>
-   </ul>
-   <div id="bucket" style="display:none"> </div>
-</div>
-<script type="text/javascript">
-<!--
-   copyTickerEvents();
-   var over = false;
-   function copyTickerEvents()
-   {
-      $('#eventListInvisContainer > li').appendTo("#bucket");
-      if( !over )         
-         $('#bucket > li:eq(0)').hide().prependTo("#ticker").slideDown(150);
-      $('#ticker > li:eq(30)').slideUp(150);
-      $('#ticker > li:eq(31)').remove();
-      setTimeout( "copyTickerEvents();", 500 );
-   }
-//-->
-</script>
-<!-- <a href="#" onclick="copyTickerEvents();">CLICKY</a> -->
-</div>
