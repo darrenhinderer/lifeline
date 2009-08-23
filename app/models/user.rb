@@ -35,4 +35,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  def collect_events
+    all_events = []
+    self.events.each do |event|
+      editable = true
+      all_events << event.to_timeline(editable)
+    end
+    self.friendships.each do |friendship|
+      if friendship.selected
+        more_events = Event.all_public(friendship.friend)
+        more_events.each do |event|
+          editable = false
+          event.title = "[" + friendship.friend.username + "] " + event.title
+          all_events << event.to_timeline(editable)
+        end
+      end
+    end
+    all_events
+  end
+
 end
