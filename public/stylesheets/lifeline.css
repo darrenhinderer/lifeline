@@ -412,7 +412,8 @@ h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
 #content  { position:relative; width: 1000px; margin-left: 20px; }
 #nav { text-align: right; }
 #topright { width: 460px; float:right; }
-#lifeline { height: 350px; border: 1px solid #999;}
+#lifeline { height: 350px; border: 1px solid #999; background: url(../images/bg.jpg); }
+.timeline-ether-bg { background-color: transparent; }
 #profile { 
   height: 80px; 
   margin-top: 20px; 

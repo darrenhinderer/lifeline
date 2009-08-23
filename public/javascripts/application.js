@@ -3,16 +3,16 @@ var eventSource;
 
 function loadEventsForUser(user_id) {
   eventSource = new Timeline.DefaultEventSource(); 
-  var oldFillInfoBubble = 
-    Timeline.DefaultEventSource.Event.prototype.fillInfoBubble;
-
   Timeline.DefaultEventSource.Event.prototype.fillInfoBubble = customBubble;
+  var theme = Timeline.ClassicTheme.create();
+  theme.ether.backgroundColors = ["", "", "", ""];
 
   var bandInfos = [
     Timeline.createBandInfo({
         width:          "80%", 
         intervalUnit:   Timeline.DateTime.MONTH, 
         intervalPixels: 200,
+        theme: theme,
         eventSource: eventSource
     }),
     Timeline.createBandInfo({
@@ -20,8 +20,6 @@ function loadEventsForUser(user_id) {
         intervalUnit:   Timeline.DateTime.YEAR, 
         intervalPixels: 150,
         overview:  true,
-        trackHeight:    0.5,
-        trackGap:       0.2,
         eventSource: eventSource
     })
   ];
