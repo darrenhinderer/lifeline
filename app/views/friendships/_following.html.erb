@@ -1,7 +1,7 @@
 <h2>Following:</h2>
 <% for friendship in @user.friendships %>
   <p>
-    <%= check_box_tag ("friends[]", friendship.id, friendship.selected,
+    <%= check_box_tag("friends[]", friendship.id, friendship.selected,
       :onclick => remote_function( 
         :url => friendship_path(friendship), :method => :put)) %>
     <% if !friendship.friend.name.nil? %>
