@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <script>
+      Timeline_ajax_url='<%="#{request.protocol}#{request.host_with_port}/javascripts/timeline_ajax/simile-ajax-api.js"%>';
+      Timeline_urlPrefix='<%="#{request.protocol}#{request.host_with_port}/javascripts/timeline_js/"%>';
+      Timeline_parameters='bundle=true&userLocalResources=true';
+    </script>
+  <%= yield :import_javascript %>
+  <%= stylesheet_link_tag 'lifeline', 'calendar_date_select/default.css' %>
+  <title><%= yield :title %></title>
+</head>
+<body onresize='onResize();'>
+
+  <div id="content">
+    <div id="nav">
+      [ 
+        <% if session[:user_id] %>
+          <%= link_to "Home", user_path(session[:user_id])%> |
+        <% end %>
+        <%= link_to "Search", users_path %> |
+        <% if session[:user_id] %>
+          <%= link_to "Logout", {:controller => :sessions, :action => :destroy}%> 
+        <% else %>
+          <%= link_to "Signup/Login", {:controller => :sessions, :action => :new}%> 
+        <% end %>
+      ]
+    </div>
+    <%= yield %>
+  </div>
+
+</body>
+</html>
