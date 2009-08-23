@@ -1,10 +1,11 @@
-<b>Following:</b>
+<b>Following</b>
 <% for friendship in @user.friendships %>
-  <p>
+  <div style="height:25px;padding:5px;background:#eee;margin-bottom:5px;border: 1px solid #ccc;">
+    <div style="width:280px;display:inline-block">
     <% unless(@user.id != session[:user_id]) %>
-      <%= check_box_tag("friends[]", friendship.id, friendship.selected,
-          :onclick => remote_function( 
-          :url => friendship_path(friendship), :method => :put)) %>
+    <%= check_box_tag("friends[]", friendship.id, friendship.selected,
+      :onclick => remote_function( 
+        :url => friendship_path(friendship), :method => :put)) %>
     <% end %>
     <% if !friendship.friend.name.nil? %>
       <%= friendship.friend.name %>
@@ -12,9 +13,12 @@
     <% else %>
       <%= link_to friendship.friend.username, user_path(friendship.friend.id) %>
     <% end %>
-    <% unless(@user.id != session[:user_id]) %> | 
-      <%= link_to_remote "stop following", 
-          :url => friendship_path(friendship), :method => :delete %>
+    </div>
+    <div style="display:inline-block">
+    <% unless(@user.id != session[:user_id]) %> 
+    <%= link_to_remote "<span class='ui-button ui-state-hover ui-corner-all'>Stop Following</span>", :url => friendship_path(friendship), :method => :delete %>
     <% end %>
-  </p>
+    </div>
+  
+  </div>
 <% end %>

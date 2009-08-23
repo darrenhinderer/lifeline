@@ -10,39 +10,36 @@
   <input name="query" type="text" value="<%=params[:query]%>" />
   <input type="submit" value="Search" />
 <% end %>
-
-<table id="results">
-  <tr>
-    <th style="width:40px"></th>
-    <th style="width:200px">Username</th>
-    <th style="width:200px;">Name</th>
-    <th style="width:200px">Email</th>
-    <% if session[:user_id] %>
-      <th></th>
-    <% end %>
-  </tr>
+<br/>
+<table cellspacing="0" style="width:610px;margin:0px;">
 <% @users.each do |user| %>
-  <tr>
-    <td><%= image_tag user.gravatar_url(:size => 40) %></td>
-    <td><%= link_to user.username, user %></td>
-    <td><%=h user.name %></td>
-    <td><%=h user.email %></td>
+  <tr style="background:#eee;">
+    <td style="width:70px;border-bottom: 4px solid #cc9">
+      <%= image_tag user.gravatar_url(:size => 60) %>
+    </td>
+    <td style="width:410px;border-bottom: 4px solid #cc9">
+      <%= link_to user.username, user %>
+      <br/>
+      <%=h user.name %>
+      <% if user.name %>
+	<br/>
+      <% end %>
+      <%=h user.email %>
+    </td>
+    <td style="width:100px;border-bottom: 4px solid #cc9">
     <% if !session[:user_id].nil? %>
-       <td>
        <% if @current_user.id == user.id %>
          You!
        <% elsif !@current_user.is_friend?(user) %>
-         <%= link_to "Follow", friendships_path(:friend_id => user),
-           :method => :post %>
+        <%= link_to "<span class='ui-button ui-state-hover ui-corner-all'>Follow</span>", friendships_path(:friend_id => user), :method => :post %>
        <% else @current_user.is_friend?(user)  %>
          Following
        <% end %>
-       </td>
     <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
-
 <p>
   <%= will_paginate @users %>
 </p>
