@@ -12,9 +12,14 @@
 
   <div id="content">
     <div id="nav">
-      [ <%= link_to "Home", user_path(session[:user_id]) %> |
-        <%= link_to "Search", users_path %> |
-        <%= link_to "Logout", {:controller => :sessions, :action => :destroy}%> 
+      [ 
+        <% if session[:user_id] %>
+        <%= link_to "Home", user_path(session[:user_id])%> |
+        <% end %>
+        <%= link_to "Search", users_path %> 
+        <% if session[:user_id] %>
+        | <%= link_to "Logout", {:controller => :sessions, :action => :destroy}%> 
+        <% end %>
       ]
     </div>
     <%= yield %>
