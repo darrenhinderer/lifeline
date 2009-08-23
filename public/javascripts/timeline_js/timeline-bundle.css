@@ -113,9 +113,9 @@
 
   
 /*--------------------------------- TIMELINE-------------------------*/
-.timeline-ether-bg{width:100%; height:100%;}
-.timeline-band-0 .timeline-ether-bg{background-color:#eee}
-.timeline-band-1 .timeline-ether-bg{background-color:#ddd}
+.timeline-ether-bg{width:100%;height:100%;}
+.timeline-band-0 .timeline-ether-bg{background-color:#eee;opacity:0.8;filter:alpha(opacity=80);}
+.timeline-band-1 .timeline-ether-bg{background-color:#ddd;opacity:0.95;filter:alpha(opacity=95);}
 .timeline-band-2 .timeline-ether-bg{background-color:#ccc}
 .timeline-band-3 .timeline-ether-bg{background-color:#aaa}
 .timeline-duration-event {
@@ -194,7 +194,7 @@
 
 .timeline-band {
     position:   absolute;
-    background: #eee;
+    /*background: #eee; GEL*/
     z-index:    10;
 }
 
