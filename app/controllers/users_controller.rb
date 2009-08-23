@@ -71,17 +71,12 @@ class UsersController < ApplicationController
     @user.events.each do |event|
         all_events << event.to_timeline
     end
-    @user.friends.each do |friend|
-      friend.events.each do |event|
-        all_events << event.to_timeline
-      end
-    end
-
-    if friendship.selected
-      friend = User.find(friendship.friend_id)
-      more_events = Event.all_public(friend)
-      more_events.each do |event|
-        all_events << event.to_timeline
+    @user.friendships.each do |friendship|
+      if friendship.selected
+        more_events = Event.all_public(friendship.friend)
+        more_events.each do |event|
+          all_events << event.to_timeline
+        end
       end
     end
 
