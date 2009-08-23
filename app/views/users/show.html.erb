@@ -9,8 +9,8 @@
 
 <div id="topright">
 <div id="profile" class="ui-widget-content ui-corner-all">
-    <%= link_to image_tag(@user.gravatar_url, :border => 0),
-        "http://www.gravatar.com", :popup => true %>
+      <%= link_to image_tag(@user.gravatar_url, :border => 0, :height => '80', :width => '80'),
+      "http://www.gravatar.com", :popup => true %>
   <table>
   <tr><td align="right"><b>Username:</b></td><td><%=h @user.username %></td></tr>
   <tr><td align="right"><b>Name:</b></td><td><%=h @user.name %></td></tr>
