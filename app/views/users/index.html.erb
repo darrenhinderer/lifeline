@@ -1,55 +1,48 @@
-<%= javascript_include_tag "jquery-1.3.2" %>
-<% title "User Activity" %>
+<% title "User Search" %>
 
 <h1>User Search</h1>
+<div id="search_text">
+  <p>View other people's lifelines and compare them to your own!</p>
+  <p>Who do you want to search for?</p>
+</div>
+
 <% form_tag(users_path, :method => :get) do -%>
   <input name="query" type="text" value="<%=params[:query]%>" />
   <input type="submit" value="Search" />
 <% end %>
 
-<h1>Real time activity</h1>
-
-<table id="activity">
-  <thead>
-    <tr>
+<table id="results">
+  <tr>
+    <th style="width:40px"></th>
+    <th style="width:200px">Username</th>
+    <th style="width:200px;">Name</th>
+    <th style="width:200px">Email</th>
+    <% if session[:user_id] %>
       <th></th>
-      <th>User</th>
-      <th>Title</th>
-      <th>Start</th>
-      <th>End</th>
-    </tr>
-  </thead>
-
-  <tbody id="ticker" onmouseover="over=true;return false;" onMouseout="over=false;return false;" >
-  </tbody>
+    <% end %>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= image_tag user.gravatar_url(:size => 40) %></td>
+    <td><%= link_to user.username, user %></td>
+    <td><%=h user.name %></td>
+    <td><%=h user.email %></td>
+    <% if !session[:user_id].nil? %>
+       <td>
+       <% if @current_user.id == user.id %>
+         You!
+       <% elsif !@current_user.is_friend?(user) %>
+         <%= link_to "Follow", friendships_path(:friend_id => user),
+           :method => :post %>
+       <% else @current_user.is_friend?(user)  %>
+         Following
+       <% end %>
+       </td>
+    <% end %>
+  </tr>
+<% end %>
 </table>
 
-<table id="activity">
-  <tbody id="eventListInvisContainer" style="display:none">
-   <%= render :partial => "events/list" %>
-   <%= render :partial => "events/list" %>
-   <%= render :partial => "events/list" %>
-   <%= render :partial => "events/list" %>
-  </tbody>
-</table>
-
-<table id="activity">
-<tbody id="bucket" style="display:none"> </tbody>
-</table>
-
-<script type="text/javascript">
-<!--
-   copyTickerEvents();
-   var over = false;
-   function copyTickerEvents()
-   {
-     $('#eventListInvisContainer > tr').appendTo("#bucket");
-      if( !over )         
-         $('#bucket > tr:eq(0)').hide().prependTo("#ticker").slideDown(150);
-      $('#ticker > tr:eq(30)').slideUp(150);
-      $('#ticker > tr:eq(31)').remove();
-      setTimeout( "copyTickerEvents();", 500 );
-   }
-//-->
-</script>
-<!-- <a href="#" onclick="copyTickerEvents();">CLICKY</a> -->
+<p>
+  <%= will_paginate @users %>
+</p>
