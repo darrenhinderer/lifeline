@@ -27,14 +27,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    render :text => "nothing to see here, move along folks"
-  end
-
-  def create
-    render :text => "nothing to see here, move along folks"
-  end
-
   def edit
     @user = User.find(params[:id])
   end
@@ -67,10 +59,14 @@ class UsersController < ApplicationController
     friendship.selected = !friendship.selected
     friendship.save
    
-    all_events = collect_events(@user)
-
-    @data = {"events" => all_events}.to_json
-    render :partial => 'friendships/following'
+    respond_to do |format|
+      format.js {
+        render(:update) { |page|
+            page.replace_html :following, :partial => "friendships/following"
+            page.call "loadEventsForUser", @user.id
+          }
+        }
+    end
   end
 
   def destroy_friendship
@@ -78,9 +74,14 @@ class UsersController < ApplicationController
     friendship = Friendship.find(params[:id])
     friendship.destroy
  
-    all_events = collect_events(@user)
-    @data = {"events" => all_events}.to_json
-    render :partial => 'friendships/following'
+    respond_to do |format|
+      format.js {
+        render(:update) { |page|
+            page.replace_html :following, :partial => "friendships/following"
+            page.call "loadEventsForUser", @user.id
+          }
+        }
+    end
   end
 
 private
