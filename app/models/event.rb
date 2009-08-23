@@ -41,11 +41,8 @@ class Event < ActiveRecord::Base
     last = now - seconds;
     dtnow = DateTime.parse(now.to_s);
     dtlast = DateTime.parse(last.to_s);
-    puts '*** now: ' + now.to_s
-    puts '*** last: ' + last.to_s
     results = find(:all, :conditions => { :private => false,
       :modification => (dtlast..dtnow)}, :order => :modification)
-    puts '**** results.length=' + results.length.to_s
     if (results.length > 30)
       return results[0,30]
     end
