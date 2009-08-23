@@ -6,9 +6,9 @@
        :update => 'following', :url => {:action => 'update_friendship',
          :id => friendship})) %>
      <% if !friendship.friend.name.nil? %>
-       <%= friendship.friend.name %> (<%= friendship.friend.username %>)
+       <%= friendship.friend.name %> (<%= link_to friendship.friend.username, friendship.friend %>)
      <% else %>
-       <%= friendship.friend.username %> 
+       <%= link_to friendship.friend.username, friendship.friend %> 
      <% end %>
      <%= link_to_remote "quit following", :update => 'following', :url => {:action => 'destroy_friendship', :id => friendship} %>
   <% end %>
