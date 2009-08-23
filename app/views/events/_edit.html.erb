@@ -1,31 +1,12 @@
-<div id="event">
-  <h2> Edit this event </h2>
+<div id="event" "ui-widget-content" style="padding:15px;background:#fff;">
   <% form_remote_for @event do |f| %>
-    <p>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </p>
-    <p>
-      <%= f.label :start_date %>
-      <%= f.calendar_date_select :start_date, :popup => "force",
-        :time => false, :buttons => :false %>
-    </p>
-    <p>
-      <%= f.label :end_date %>
-      <%= f.calendar_date_select :end_date, :popup => "force", :time => false %>
-    </p>
-    <p>
-      <%= f.label :content, "Details" %>
-      <%= f.text_area :content, :rows => 2 %>
-    </p>
-    <p>
-      <%= f.label :private, "Make event private" %>
-      <%= f.check_box :private %>
-    </p>
+    <%= render :partial => "form", :locals => { :f => f } %>
 
-    <p class="buttons">
-      <%= f.submit "Save" %>
+    <p>
+      <%= f.submit "Save", :class => "ui-button ui-state-hover ui-corner-all" %>
       <%= link_to_remote "Cancel", :url => new_event_path %>
+      <%= link_to_function "Show/Hide Optional Details",
+        "$('optional').toggle()", :id => "optional_toggle" %>
     </p>
   <% end %>
 </div>

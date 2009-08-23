@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json {
-        data = {"events" => @user.collect_events}
+        data = {"events" => @user.collect_events(session[:user_id])}
         render :json => data.to_json
       }
     end

@@ -1,15 +1,20 @@
 <b>Following:</b>
 <% for friendship in @user.friendships %>
   <p>
-    <%= check_box_tag("friends[]", friendship.id, friendship.selected,
-      :onclick => remote_function( 
-        :url => friendship_path(friendship), :method => :put)) %>
+    <% unless(@user.id != session[:user_id]) %>
+      <%= check_box_tag("friends[]", friendship.id, friendship.selected,
+          :onclick => remote_function( 
+          :url => friendship_path(friendship), :method => :put)) %>
+    <% end %>
     <% if !friendship.friend.name.nil? %>
       <%= friendship.friend.name %>
       (<%=link_to friendship.friend.username, user_path(friendship.friend.id)%>)
     <% else %>
       <%= link_to friendship.friend.username, user_path(friendship.friend.id) %>
     <% end %>
-    <%= link_to_remote "stop following", :url => friendship_path(friendship), :method => :delete %>
+    <% unless(@user.id != session[:user_id]) %> | 
+      <%= link_to_remote "stop following", 
+          :url => friendship_path(friendship), :method => :delete %>
+    <% end %>
   </p>
 <% end %>
