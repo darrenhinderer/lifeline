@@ -13,10 +13,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @event = Event.new
     @events = Event.all_public(@user)
+
     events = []
+    editable = (@user.id == session[:user_id])
     @events.each do |event|
     puts event.start_date.utc
-      events << event.to_timeline
+      events << event.to_timeline(editable)
     end
     @data = {"events" => events}.to_json
 
