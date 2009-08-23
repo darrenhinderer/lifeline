@@ -53,35 +53,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_friendship
-    @user = User.find(session[:user_id])
-    friendship = Friendship.find(params[:id])
-    friendship.selected = !friendship.selected
-    friendship.save
-   
-    respond_to do |format|
-      format.js {
-        render(:update) { |page|
-            page.replace_html :following, :partial => "friendships/following"
-            page.call "loadEventsForUser", @user.id
-          }
-        }
-    end
-  end
-
-  def destroy_friendship
-    @user = User.find(session[:user_id])
-    friendship = Friendship.find(params[:id])
-    friendship.destroy
- 
-    respond_to do |format|
-      format.js {
-        render(:update) { |page|
-            page.replace_html :following, :partial => "friendships/following"
-            page.call "loadEventsForUser", @user.id
-          }
-        }
-    end
-  end
-
 end
