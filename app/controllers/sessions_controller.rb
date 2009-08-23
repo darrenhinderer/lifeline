@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   before_filter :login_required, :only =>['foo']
 
   def new
-    @latest = Event.init_latest()
     respond_to do |format|
       format.html # index.html.erb
     end

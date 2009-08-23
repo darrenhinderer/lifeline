@@ -11,10 +11,6 @@
 </div>
 
 <div id="eventListInvisContainer" style="display:none">
-  <%= render :partial => "events/list" %>
-  <%= render :partial => "events/list" %>
-  <%= render :partial => "events/list" %>
-  <%= render :partial => "events/list" %>
 </div>
 
 <div id="bucket" style="display:none">
@@ -41,7 +37,7 @@
    function queryDatabase()
    {
      jQuery.get("/events", "", queryDatabaseCallback, "html");
-     setTimeout( "queryDatabase();", 6000 );
+     setTimeout( "queryDatabase();", 5000 );
    }
 //-->
 </script>

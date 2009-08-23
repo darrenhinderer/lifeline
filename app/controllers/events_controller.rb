@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   ActionView::Base.field_error_proc = proc { |input, instance| input }
 
   def index
-    @latest = Event.init_latest()
+    @latest = Event.latest(5)
   end
 
   def new
