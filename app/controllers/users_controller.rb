@@ -66,16 +66,26 @@ class UsersController < ApplicationController
     friendship = Friendship.find(params[:id])
     friendship.selected = !friendship.selected
     friendship.save
-  
+   
+    all_events = []
+    @user.events.each do |event|
+        all_events << event.to_timeline
+    end
+    @user.friends.each do |friend|
+      friend.events.each do |event|
+        all_events << event.to_timeline
+      end
+    end
+
     if friendship.selected
       friend = User.find(friendship.friend_id)
-      events = Event.all_public(friend)
-      result = []
-      events.each do |event|
-        result << event.to_timeline
+      more_events = Event.all_public(friend)
+      more_events.each do |event|
+        all_events << event.to_timeline
       end
-      @data = {"events" => result}.to_json
     end
+
+    @data = {"events" => all_events}.to_json
     render :partial => 'friendships/following'
   end
 end
