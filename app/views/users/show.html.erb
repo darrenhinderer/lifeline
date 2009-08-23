@@ -19,6 +19,10 @@
   <% end %>
 </div>
 
+<div id="controls">
+  <%= render :partial => "events/controls" %>
+</div>
+
 <% if @user.id == session[:user_id] %>
   <%= render :partial => "events/add" %>
 <% end %>

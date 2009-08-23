@@ -37,3 +37,7 @@ function onResize() {
         }, 500);
     }
 }
+
+function panToDate(panDate) {
+    tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(panDate)); 
+}
