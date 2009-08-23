@@ -438,6 +438,7 @@ h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
   margin: 20px 0; 
   width: 455px;
 }
+#optional_toggle { dispalay:block; font-size: 12px; float:right; margin-top: -30px;}
 //#event form label {
   display:block;
   float:left;

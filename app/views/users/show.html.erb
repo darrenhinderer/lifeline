@@ -35,6 +35,7 @@
 </div>
 
 <script>
-  document.forms[0].reset();
+  if (document.forms[0])
+    document.forms[0].reset();
   loadEventsForUser(<%= @user.id %>);
 </script>
