@@ -12,13 +12,17 @@ function loadEventsForUser(user_id) {
     Timeline.createBandInfo({
         width:          "80%", 
         intervalUnit:   Timeline.DateTime.MONTH, 
-        intervalPixels: 100,
-        eventSource: eventSource,
+        intervalPixels: 200,
+        eventSource: eventSource
     }),
     Timeline.createBandInfo({
         width:          "20%", 
         intervalUnit:   Timeline.DateTime.YEAR, 
-        intervalPixels: 200
+        intervalPixels: 150,
+        overview:  true,
+        trackHeight:    0.5,
+        trackGap:       0.2,
+        eventSource: eventSource
     })
   ];
   bandInfos[1].syncWith = 0;

@@ -60,12 +60,14 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
+    user = @event.user
 
+    @event = Event.new(:start_date => Time.now)
     respond_to do |format|
       format.js {
         render(:update) { |page| 
           page.replace :event, :partial => "add" 
-          page.call "loadEventsForUser", @event.user.id
+          page.call "loadEventsForUser", user.id
         }
       }
     end
