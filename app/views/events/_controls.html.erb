@@ -1,0 +1,4 @@
+<% unless @events.empty? %>
+<%=link_to_function 'First Event', "panToDate('#{@events.first.start_date.utc}')"%>
+<%=link_to_function 'Last Event', "panToDate('#{@events.last.start_date.utc}')"%>
+<% end %>

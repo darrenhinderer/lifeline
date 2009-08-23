@@ -1,0 +1,3 @@
+page.replace :event, :partial => "add"
+#page. call "loadEvent", @data unless @data.nil?
+page.replace :controls, :partial => "controls"

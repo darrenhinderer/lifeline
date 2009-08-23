@@ -3,7 +3,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :title, :start_date, :user_id
 
   def self.all_public(user)
-    return find(:all, :conditions => { :user_id => user.id, :private => false })
+    return find(:all, :conditions => { :user_id => user.id, :private => false }, 
+      :order => :start_date)
   end
 
   def to_timeline(editable=true)

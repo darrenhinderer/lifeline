@@ -36,22 +36,18 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     user = User.find(session[:user_id])
-    @event.user_id = user.id
+    @event.user = user
+    @events = Event.all_public(user)
 
     respond_to do |format|
       if @event.save
         @data = {"events" => [@event.to_timeline]}.to_json
         @event = Event.new
         format.html { redirect_to(@event) }
-        format.js {
-          render(:update) { |page|
-            page.replace :event, :partial => "add"
-            page.call "loadEvent", @data
-          }
-        }
       else
         format.html { render :action => "new" }
       end
+      format.js
     end
   end
 
