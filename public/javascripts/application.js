@@ -48,11 +48,14 @@ function onLoad(events) {
 }
 
 function loadEvent(data) {
-  eventSource.loadJSON(data, "");
+  if (eventSource)
+    eventSource.loadJSON(data, "");
 }
+
 function reloadEvents(events) {
-    eventSource.clear();
-    eventSource.loadJSON(events, "");
+  alert('clearing');
+  eventSource.clear();
+  eventSource.loadJSON(events, "");
 }
 
 var resizeTimerID = null;

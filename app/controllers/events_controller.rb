@@ -63,7 +63,7 @@ class EventsController < ApplicationController
 	  @data = {"events" => user.events}.to_json
           render(:update) { |page|
             page.replace :event, :partial => "add"
-            page.call "reloadEvents", @data 
+            #page.call "reloadEvents", @data 
           }
         }
       else

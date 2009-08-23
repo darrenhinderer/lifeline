@@ -1,7 +1,7 @@
 <div id="event">
-  <h1> Edit this event </h1>
-  <p id="errors"><%= @event.errors.full_messages %></p>
-  <% form_remote_for @event do |f| %>
+  <script>reloadEvents(<%= @data %>);</script>
+  <h2> Edit this event </h2>
+  <p id="errors"><%= @event.errors.full_messages %></p> <% form_remote_for @event do |f| %>
     <p>
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -23,7 +23,9 @@
       <%= f.check_box :private %>
     </p>
 
-    <%= f.submit "Save" %>
-    <%= link_to_remote "Cancel", :url => new_event_path %>
+    <p class="buttons">
+      <%= f.submit "Save" %>
+      <%= link_to_remote "Cancel", :url => new_event_path %>
+    </p>
   <% end %>
 </div>

@@ -1,14 +1,17 @@
+<%= javascript_include_tag "jquery-1.3.2" %>
 <% title "User Search" %>
 
 <h1>User Search</h1>
-<%= javascript_include_tag "jquery-1.3.2" %>
-
-<% form_tag(users_path(@plan), :method => :get) do -%>
+<div id="search_text">
+  <p>View other people's lifelines and compare them to your own!</p>
+  <p>Who do you want to search for?</p>
+</div>
+<% form_tag(users_path(@plan), :method => :get) do %>
   <input name="query" type="text" value="<%=params[:query]%>" />
-  <input type="submit" value="Search users" />
-<% end -%>
+  <input type="submit" value="Search" />
+<% end %>
 
-<table>
+<table id="results">
   <tr>
     <th>Username</th>
     <th>Name</th>
@@ -17,7 +20,6 @@
       <th></th>
     <% end %>
   </tr>
-
 <% @users.each do |user| %>
   <tr>
     <td><%= link_to user.username, user %></td>
@@ -28,7 +30,8 @@
        <% if @current_user.id == user.id %>
          You!
        <% elsif !@current_user.is_friend?(user) %>
-         <%= link_to "Follow", friendships_path(:friend_id => user), :method => :post %>
+         <%= link_to "Follow", friendships_path(:friend_id => user),
+           :method => :post %>
        <% else @current_user.is_friend?(user)  %>
          Following
        <% end %>
@@ -37,8 +40,9 @@
   </tr>
 <% end %>
 </table>
+
 <p>
-<%= will_paginate @users %>
+  <%= will_paginate @users %>
 </p>
 
 

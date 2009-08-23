@@ -1,6 +1,6 @@
 <div id="event">
+  <h2> Add a new event to your lifeline</h2>
   <script>loadEvent(<%= @data %>);</script>
-  <h1> Add a new event </h1>
   <p id="errors"><%= @event.errors.full_messages %></p>
   <% form_remote_for @event do |f| %>
     <p>
@@ -17,14 +17,16 @@
     </p>
     <p>
       <%= f.label :content %>
-      <%= f.text_area :content, :rows => 3 %>
+      <%= f.text_area :content, :rows => 2 %>
     </p>
     <p>
       <%= f.label :private, "Make event private" %>
       <%= f.check_box :private %>
     </p>
 
-    <%= f.submit "Add" %>
-    <%= link_to_function "Clear", "$('new_event').reset()" %>
+    <p class="buttons">
+      <%= f.submit "Add" %>
+      <%= link_to_function "Clear", "$('new_event').reset()" %>
+    </p>
   <% end %>
 </div>
