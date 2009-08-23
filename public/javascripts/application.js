@@ -3,6 +3,30 @@ var eventSource;
 
 function onLoad(events) {
   eventSource = new Timeline.DefaultEventSource(); 
+  var oldFillInfoBubble = 
+    Timeline.DefaultEventSource.Event.prototype.fillInfoBubble;
+
+  Timeline.DefaultEventSource.Event.prototype.fillInfoBubble = 
+    function(elmt, theme, labeller) {
+      oldFillInfoBubble.call(this, elmt, theme, labeller);
+
+      var eventObject = this;
+      var div = document.createElement("div");
+      
+      if (eventObject._obj.editable)
+      {
+        var editLink = '<a href="#" onclick="new Ajax.Request(\'/events/' + 
+          eventObject.getID() + '/edit\', {asynchronous:true, ' +
+          'evalScripts:true, method: \'get\'}); return false;">Edit</a>';
+        var deleteLink = '<a href="#" onclick="if (' +
+          'confirm(\'Are you sure?\')) {' +
+          'new Ajax.Request(\'/events/' + eventObject.getID() + '\', ' +
+          '{asynchronous:true, evalScripts:true, method: \'delete\'}); }; ' +
+          'return false;">Delete</a>';
+        div.innerHTML = editLink + " | " +deleteLink;
+      }
+      elmt.appendChild(div);
+    }
 
   var bandInfos = [
     Timeline.createBandInfo({
@@ -23,8 +47,11 @@ function onLoad(events) {
   eventSource.loadJSON(events, "");
 }
 
-function loadEvent(events) {
-  if (eventSource)
+function loadEvent(data) {
+  eventSource.loadJSON(data, "");
+}
+function reloadEvents(events) {
+    eventSource.clear();
     eventSource.loadJSON(events, "");
 }
 
@@ -36,4 +63,8 @@ function onResize() {
             tl.layout();
         }, 500);
     }
+}
+
+function panToDate(panDate) {
+    tl.getBand(0).setCenterVisibleDate(Timeline.DateTime.parseGregorianDateTime(panDate)); 
 }

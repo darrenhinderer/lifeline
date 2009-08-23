@@ -1,0 +1,9 @@
+<script>loadEvent(<%= @data %>);</script>
+
+<div id="following">
+Following:&nbsp;
+  <% for friendship in @user.friendships %>
+     <%= check_box_tag ("friends[]", friendship.id, friendship.selected,
+         :onclick => remote_function(:before => "eventSource.clear()", :update => 'following', :url => {:action => 'update_friendship', :id => friendship})) %> <%= friendship.friend.username+friendship.id.to_s %>
+  <% end %>
+</div>
