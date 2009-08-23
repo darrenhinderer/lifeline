@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.search(params[:query], params[:page])
-    @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
+    @latest = Event.init_latest()
     respond_to do |format|
       format.html # index.html.erb
     end
   end
 
-  def activity
-    @latest = Event.init_latest()
+  def search
+    @users = User.search(params[:query], params[:page])
+    @current_user = User.find(session[:user_id]) unless session[:user_id].nil?
     respond_to do |format|
       format.html # index.html.erb
     end

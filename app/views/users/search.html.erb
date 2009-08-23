@@ -1,0 +1,48 @@
+<% title "User Search" %>
+
+<h1>User Search</h1>
+<div id="search_text">
+  <p>View other people's lifelines and compare them to your own!</p>
+  <p>Who do you want to search for?</p>
+</div>
+
+<% form_tag(users_path, :method => :get) do -%>
+  <input name="query" type="text" value="<%=params[:query]%>" />
+  <input type="submit" value="Search" />
+<% end %>
+
+<table id="results">
+  <tr>
+    <th style="width:40px"></th>
+    <th style="width:200px">Username</th>
+    <th style="width:200px;">Name</th>
+    <th style="width:200px">Email</th>
+    <% if session[:user_id] %>
+      <th></th>
+    <% end %>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= image_tag user.gravatar_url(:size => 40) %></td>
+    <td><%= link_to user.username, user %></td>
+    <td><%=h user.name %></td>
+    <td><%=h user.email %></td>
+    <% if !session[:user_id].nil? %>
+       <td>
+       <% if @current_user.id == user.id %>
+         You!
+       <% elsif !@current_user.is_friend?(user) %>
+         <%= link_to "Follow", friendships_path(:friend_id => user),
+           :method => :post %>
+       <% else @current_user.is_friend?(user)  %>
+         Following
+       <% end %>
+       </td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<p>
+  <%= will_paginate @users %>
+</p>
