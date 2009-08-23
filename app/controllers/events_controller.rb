@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+puts "EDIT: #{params[:id]}"
     @event = Event.find(params[:id])
   end
 
@@ -61,11 +62,12 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    puts "DESTROY: #{params[:id]}"
     @event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(events_url) }
+      format.html { redirect_to(user_path(session[:user_id])) }
     end
   end
 end
