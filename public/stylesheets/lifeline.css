@@ -3,12 +3,12 @@
 body { font-size: 13px; }
 h1 { font-size: 16px; font-weight: bold; }
 #content  { width: 900px; margin-left: 20px; }
-#lifeline { height: 250px; border: 1px solid #aaa; }
+#lifeline { height: 350px; border: 1px solid #aaa; }
 #nav { text-align: right; }
 #gravatar { text-align: left; height: 80px; margin: 10px 0; }
 #gravatar img{ float: left; margin-right: 20px; }
-#add_event { margin-top: 20px; }
-#add_event form label {
+#event { margin-top: 20px; }
+#event form label {
   display:block;
   float:left;
   width:140px;
@@ -16,6 +16,6 @@ h1 { font-size: 16px; font-weight: bold; }
   text-align: right;
   font-weight:bold;
 }
-#add_event form p { padding: 3px 0; }
+#event form p { padding: 2px 0; }
 #event_start_date, #event_end_date { width: 210px; }
 #errors {color: red; }

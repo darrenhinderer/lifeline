@@ -1,6 +1,5 @@
 <div id="event">
-  <script>loadEvent(<%= @data %>);</script>
-  <h1> Add a new event </h1>
+  <h1> Edit this event </h1>
   <p id="errors"><%= @event.errors.full_messages %></p>
   <% form_remote_for @event do |f| %>
     <p>
@@ -24,7 +23,7 @@
       <%= f.check_box :private %>
     </p>
 
-    <%= f.submit "Add" %>
-    <%= link_to_function "Clear", "$('new_event').reset()" %>
+    <%= f.submit "Save" %>
+    <%= link_to_remote "Cancel", :url => new_event_path %>
   <% end %>
 </div>
