@@ -5,7 +5,9 @@
 
 <div id="gravatar">
   <%= image_tag @user.gravatar_url %>
+  <% if session[:user_id] && session[:user_id] == @user.id %>
   <%= link_to "Edit Profile", edit_user_path(session[:user_id]) %>
+  <% end %>
   <p> 
     <b>Username:</b> <%=h @user.username %>
   </p>
