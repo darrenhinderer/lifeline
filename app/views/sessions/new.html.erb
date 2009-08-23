@@ -7,8 +7,6 @@
 
 <div id="activity">
   <div id="ticker" onmouseover="over=true;return false;" onMouseout="over=false;return false;" >
-   <%= render :partial => "events/list" %>
-   <%= render :partial => "events/list" %>
   </div>
 </div>
 
@@ -25,15 +23,25 @@
 <script type="text/javascript">
 <!--
    copyTickerEvents();
+   queryDatabase();
    var over = false;
    function copyTickerEvents()
    {
      $('#eventListInvisContainer > div').appendTo("#bucket");
      if( !over )         
        $('#bucket > div:eq(0)').hide().prependTo("#ticker").slideDown(150);
-     $('#ticker > div:eq(30)').slideUp(150);
-     $('#ticker > div:eq(31)').remove();
+     $('#ticker > div:eq(15)').slideUp(150);
+     $('#ticker > div:eq(16)').remove();
      setTimeout( "copyTickerEvents();", 500 );
+   }
+   function queryDatabaseCallback(data, textStatus)
+   {
+     $('#eventListInvisContainer').html(data);
+   }
+   function queryDatabase()
+   {
+     jQuery.get("/events", "", queryDatabaseCallback, "html");
+     setTimeout( "queryDatabase();", 6000 );
    }
 //-->
 </script>

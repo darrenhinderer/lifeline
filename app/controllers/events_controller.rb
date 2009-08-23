@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
   ActionView::Base.field_error_proc = proc { |input, instance| input }
 
+  def index
+    @latest = Event.init_latest()
+  end
+
   def new
     @event = Event.new(:start_date => Date.today)
     respond_to do |format|
