@@ -35,19 +35,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def collect_events
+  def collect_events(curr_user_id)
     all_events = []
     self.events.each do |event|
-      editable = true
+      editable = (curr_user_id == event.user_id)
       all_events << event.to_timeline(editable)
     end
     self.friendships.each do |friendship|
       if friendship.selected
         more_events = Event.all_public(friendship.friend)
         more_events.each do |event|
-          editable = false
           event.title = "[" + friendship.friend.username + "] " + event.title
-          colored = event.to_timeline(editable)
+          colored = event.to_timeline(false)
           colored.update({:color => "#099"})
           all_events << colored
         end
