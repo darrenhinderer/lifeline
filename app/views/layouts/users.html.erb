@@ -4,11 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <script>
+      Timeline_ajax_url='<%="#{request.protocol}#{request.host_with_port}/javascripts/timeline_ajax/simile-ajax-api.js"%>';
+      Timeline_urlPrefix='<%="#{request.protocol}#{request.host_with_port}/javascripts/timeline_js/"%>';
+      Timeline_parameters='bundle=true&userLocalResources=true';
+    </script>
   <%= yield :import_javascript %>
   <%= stylesheet_link_tag 'lifeline', 'calendar_date_select/default.css' %>
   <title><%= yield :title %></title>
 </head>
-<body onload='onLoad(<%= @data %>);' onresize='onResize();'>
+<body onload='loadEventsForUser(<%= @user.id %>);' onresize='onResize();'>
 
   <div id="content">
     <div id="nav">

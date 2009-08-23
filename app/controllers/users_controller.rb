@@ -12,18 +12,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @event = Event.new
-    @events = Event.all_public(@user)
-
-    events = []
-    editable = (@user.id == session[:user_id])
-    @events.each do |event|
-    puts event.start_date.utc
-      events << event.to_timeline(editable)
-    end
-    @data = {"events" => events}.to_json
 
     respond_to do |format|
       format.html # show.html.erb
+      format.json {
+        events = []
+        editable = (@user.id == session[:user_id])
+        @events = Event.all_public(@user)
+        @events.each do |event|
+          events << event.to_timeline(editable)
+        end
+        data = {"events" => events }
+        render :json => data.to_json
+      }
     end
   end
 

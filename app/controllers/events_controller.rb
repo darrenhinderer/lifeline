@@ -35,13 +35,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
-    user = User.find(session[:user_id])
-    @event.user = user
-    @events = Event.all_public(user)
+    @user = User.find(session[:user_id])
+    @event.user = @user
 
     respond_to do |format|
       if @event.save
-        @data = {"events" => [@event.to_timeline]}.to_json
         @event = Event.new
         format.html { redirect_to(@event) }
       else
@@ -60,10 +58,9 @@ class EventsController < ApplicationController
         @event = Event.new
         format.html { redirect_to(@event) }
         format.js {
-	  @data = {"events" => user.events}.to_json
           render(:update) { |page|
             page.replace :event, :partial => "add"
-            page.call "reloadEvents", @data 
+            page.call "loadEventsForUser", user.id
           }
         }
       else
