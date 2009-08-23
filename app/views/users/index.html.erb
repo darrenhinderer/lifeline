@@ -13,7 +13,7 @@
 
 <table id="results">
   <tr>
-    <th style="width:80px"></th>
+    <th style="width:40px"></th>
     <th style="width:200px">Username</th>
     <th style="width:200px;">Name</th>
     <th style="width:200px">Email</th>
@@ -23,7 +23,7 @@
   </tr>
 <% @users.each do |user| %>
   <tr>
-    <td><%= image_tag user.gravatar_url %></td>
+    <td><%= image_tag user.gravatar_url(:size => 40) %></td>
     <td><%= link_to user.username, user %></td>
     <td><%=h user.name %></td>
     <td><%=h user.email %></td>
