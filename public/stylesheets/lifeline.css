@@ -38,9 +38,7 @@ h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
 #results td {padding: 2px; border-bottom: 1px dashed #666; }
 
 #activity { margin: 20px 0; width: 800px; border: 1px solid #666; }
-#activity th {background-color: #ccc; padding: 5px; }
-#activity td {padding: 2px; border-bottom: 1px dashed #666; }
-
+#activity_data {padding: 2px; border-bottom: 1px dashed #666; }
 
 #search_text p { margin: 5px; }
 

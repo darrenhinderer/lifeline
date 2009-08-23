@@ -5,33 +5,22 @@
 
 <h1>Real time activity</h1>
 
-<table id="activity">
-  <thead>
-    <tr>
-      <th></th>
-      <th>User</th>
-      <th>Title</th>
-      <th>Start</th>
-      <th>End</th>
-    </tr>
-  </thead>
+<div id="activity">
+  <div id="ticker" onmouseover="over=true;return false;" onMouseout="over=false;return false;" >
+   <%= render :partial => "events/list" %>
+   <%= render :partial => "events/list" %>
+  </div>
+</div>
 
-  <tbody id="ticker" onmouseover="over=true;return false;" onMouseout="over=false;return false;" >
-  </tbody>
-</table>
+<div id="eventListInvisContainer" style="display:none">
+  <%= render :partial => "events/list" %>
+  <%= render :partial => "events/list" %>
+  <%= render :partial => "events/list" %>
+  <%= render :partial => "events/list" %>
+</div>
 
-<table id="activity">
-  <tbody id="eventListInvisContainer" style="display:none">
-   <%= render :partial => "events/list" %>
-   <%= render :partial => "events/list" %>
-   <%= render :partial => "events/list" %>
-   <%= render :partial => "events/list" %>
-  </tbody>
-</table>
-
-<table id="activity">
-<tbody id="bucket" style="display:none"> </tbody>
-</table>
+<div id="bucket" style="display:none">
+</div>
 
 <script type="text/javascript">
 <!--
@@ -39,12 +28,12 @@
    var over = false;
    function copyTickerEvents()
    {
-     $('#eventListInvisContainer > tr').appendTo("#bucket");
-      if( !over )         
-         $('#bucket > tr:eq(0)').hide().prependTo("#ticker").slideDown(150);
-      $('#ticker > tr:eq(30)').slideUp(150);
-      $('#ticker > tr:eq(31)').remove();
-      setTimeout( "copyTickerEvents();", 500 );
+     $('#eventListInvisContainer > div').appendTo("#bucket");
+     if( !over )         
+       $('#bucket > div:eq(0)').hide().prependTo("#ticker").slideDown(150);
+     $('#ticker > div:eq(30)').slideUp(150);
+     $('#ticker > div:eq(31)').remove();
+     setTimeout( "copyTickerEvents();", 500 );
    }
 //-->
 </script>
