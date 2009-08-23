@@ -9,6 +9,10 @@ h2 { font-size: 13px; font-weight: bold; border-bottom: 1px solid #999;}
 #lifeline { height: 350px; border: 1px solid #999;}
 #profile { height: 80px; border: 1px solid black; margin-top: 20px; }
 #profile #username { margin-top: 10px; }
+#edit_profile { border: 1px solid #999; height: 80px; width: 500px; }
+#edit_profile img { float: left; }
+#edit_profile form { margin-left: 120px; }
+#edit_profile p { margin-top: 15px; }
 #following { height: 100px; border: 1px solid #999; overflow: auto;
   margin: 10px 0 20px 0; background-color: #ccf; }
 #profile img{ float: left; margin-right: 20px;}
