@@ -15,12 +15,8 @@ class UsersController < ApplicationController
     @event = Event.new
     @events = Event.all_public(@user)
 
-    events = []
     editable = (@user.id == session[:user_id])
-    @events.each do |event|
-    puts event.start_date.utc
-      events << event.to_timeline(editable)
-    end
+    events = collect_events(@user)
     @data = {"events" => events}.to_json
 
     respond_to do |format|
@@ -68,11 +64,19 @@ class UsersController < ApplicationController
     friendship.selected = !friendship.selected
     friendship.save
    
+    all_events = collect_events(@user)
+
+    @data = {"events" => all_events}.to_json
+    render :partial => 'friendships/following'
+  end
+
+private
+  def collect_events user
     all_events = []
-    @user.events.each do |event|
-        all_events << event.to_timeline
+    user.events.each do |event|
+      all_events << event.to_timeline
     end
-    @user.friendships.each do |friendship|
+    user.friendships.each do |friendship|
       if friendship.selected
         more_events = Event.all_public(friendship.friend)
         more_events.each do |event|
@@ -80,8 +84,5 @@ class UsersController < ApplicationController
         end
       end
     end
-
-    @data = {"events" => all_events}.to_json
-    render :partial => 'friendships/following'
   end
 end

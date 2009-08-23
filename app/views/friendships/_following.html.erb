@@ -1,6 +1,4 @@
 <script>loadEvent(<%= @data %>);</script>
-
-<div id="following">
   <h2> Following </h2>
   <% for friendship in @user.friendships %>
      <%= check_box_tag ("friends[]", friendship.id, friendship.selected,
@@ -13,4 +11,3 @@
        <%= friendship.friend.username %>
      <% end %>
   <% end %>
-</div>
