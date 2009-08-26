@@ -8,7 +8,7 @@ role :db, "magpie.r09.railsrumble.com", :primary => true
 
 set :deploy_to, "/home/magpie/#{application}"
 set :scm, :git
-set :branch, "master"
+set :branch, "railsrumble09"
 set :user, "magpie"
 
 after "deploy:finalize_update", "db:setup"
