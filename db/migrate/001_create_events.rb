@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :content, 	:limit => 500
       t.datetime :start_date
       t.datetime :end_date
-      t.boolean :private,	:default => 0
+      t.boolean :private,	:default => false
     end
   end
 
