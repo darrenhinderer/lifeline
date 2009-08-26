@@ -1,5 +1,4 @@
 json --version '1.1.7'
-grosser-rpx_now --source "http://gems.github.com/" --version '0.5.8'
 gravtastic --version '>= 2.1.0'
 calendar_date_select
 mislav-will_paginate --version '~> 2.3.11' --source 'http://gems.github.com'
